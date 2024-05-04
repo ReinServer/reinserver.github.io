@@ -42,7 +42,7 @@
   <p>If you're one of my friends, feel free to join.</p>
   
   <!-- Toggle Button -->
-  <button class="toggle-button dark-mode" onclick="toggleDarkMode()">Enable Light Mode</button>
+  <button class="toggle-button" onclick="toggleDarkMode()">Enable Light Mode</button>
 
 <script>
   function toggleDarkMode() {
@@ -51,8 +51,10 @@
     var button = document.querySelector(".toggle-button");
     if (body.classList.contains("dark-mode")) {
       button.textContent = "Enable Light Mode";
+      button.style.borderColor = "black"; /* Set button border color */
     } else {
       button.textContent = "Enable Dark Mode";
+      button.style.borderColor = "white"; /* Set button border color */
     }
   }
 </script>
