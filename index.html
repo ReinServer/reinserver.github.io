@@ -63,13 +63,14 @@
           }
         })
         .catch(error => {
-          element.innerHTML = `<b>minecraft java (1.17-1.20.6) -- <span class="red-text"><b>couldn't fetch server status</b></span></b>
+          element.innerHTML = `<b>minecraft java (1.17-1.20.6) -- <span class="red-text"><b>couldn't fetch server status</b></span></b>`;
           console.error('Error fetching server status:', error);
         });
     }
 
     // Fetch server status for Minecraft Java
     fetchServerStatus('https://api.mcstatus.io/v2/status/java/play.reinserver.com', 'minecraft-java');
+        fetchServerStatus('https://api.mcstatus.io/v2/status/java/play.reinserver.com', 'minecraft-bedrock');
 
     // You can add similar fetch calls for other servers if needed
   </script>
