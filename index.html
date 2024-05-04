@@ -26,10 +26,14 @@
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s, border-color 0.3s; /* Smooth transition for button hover effect */
   }
-  .toggle-button.dark-mode {
+  .dark-mode {
     background-color: black;
     color: white;
-    border-color: white; /* Change border color when in dark mode */
+  }
+  .dark-mode .toggle-button {
+    background-color: black;
+    color: white;
+    border-color: white; /* Change button border color in dark mode */
   }
 </style>
 </head>
@@ -47,14 +51,12 @@
 <script>
   function toggleDarkMode() {
     var body = document.body;
-    body.classList.toggle("dark-mode");
     var button = document.querySelector(".toggle-button");
+    body.classList.toggle("dark-mode");
     if (body.classList.contains("dark-mode")) {
       button.textContent = "Enable Light Mode";
-      button.style.borderColor = "black"; /* Set button border color */
     } else {
       button.textContent = "Enable Dark Mode";
-      button.style.borderColor = "white"; /* Set button border color */
     }
   }
 </script>
