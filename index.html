@@ -54,12 +54,25 @@
         .then(response => response.json())
         .then(data => {
           const element = document.getElementById(elementId);
+          if (elementID == "minecraft-java")
+          {
           if (data.online) {
             // Server is online
-            element.textContent = `<b>minecraft java (1.17-1.20.6) -- (${data.players.online}/${data.players.max})</b>`;
+            element.innerHTML = `<b>minecraft java (1.17-1.20.6) -- (${data.players.online}/${data.players.max})</b>`;
           } else {
             // Server is offline
             element.innerHTML = `<b>minecraft java (1.17-1.20.6) -- <span class="red-text"><b>server offline</b></span></b>`;
+          } 
+          }
+          else if (elementID == "minecraft-bedrock")
+          {
+          if (data.online) {
+            // Server is online
+            element.innerHTML = `<b>minecraft bedrock (1.17-1.20.6) -- (${data.players.online}/${data.players.max})</b>`;
+          } else {
+            // Server is offline
+            element.innerHTML = `<b>minecraft bedrock (1.17-1.20.6) -- <span class="red-text"><b>server offline</b></span></b>`;
+          } 
           }
         })
         .catch(error => {
@@ -70,7 +83,7 @@
 
     // Fetch server status for Minecraft Java
     fetchServerStatus('https://api.mcstatus.io/v2/status/java/play.reinserver.com', 'minecraft-java');
-        fetchServerStatus('https://api.mcstatus.io/v2/status/java/play.reinserver.com', 'minecraft-bedrock');
+    fetchServerStatus('https://api.mcstatus.io/v2/status/java/play.reinserver.com', 'minecraft-bedrock');
 
     // You can add similar fetch calls for other servers if needed
   </script>
