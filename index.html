@@ -9,11 +9,13 @@
   body {
     font-family: Helvetica, sans-serif;
     text-align: center;
-    color: white; /* Set text color to white */
+    background-color: black; /* Set initial background color to black */
+    color: white; /* Set initial text color to white */
     transition: background-color 0.5s, color 0.5s; /* Smooth transition for background and text color */
   }
-  body.dark-mode {
-    background-color: black; /* Set background color to black */
+  body.light-mode {
+    background-color: white; /* Set background color to white in light mode */
+    color: black; /* Set text color to black in light mode */
   }
   .big-text {
     font-size: 36px;
@@ -28,14 +30,14 @@
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s, border-color 0.3s; /* Smooth transition for button hover effect */
   }
-  .dark-mode .toggle-button {
+  .light-mode .toggle-button {
     background-color: black;
     color: white;
-    border-color: white; /* Change button border color in dark mode */
+    border-color: white; /* Change button border color in light mode */
   }
 </style>
 </head>
-<body>
+<body class="light-mode"> <!-- Set initial class to light-mode -->
   <div class="big-text">Welcome to ReinServer</div>
   <p>Hi, I'm Rein.</p>
   <br>
@@ -44,17 +46,17 @@
   <p>If you're one of my friends, feel free to join.</p>
   
   <!-- Toggle Button -->
-  <button class="toggle-button" onclick="toggleDarkMode()">Enable Light Mode</button>
+  <button class="toggle-button" onclick="toggleDarkMode()">Enable Dark Mode</button>
 
 <script>
   function toggleDarkMode() {
     var body = document.body;
     var button = document.querySelector(".toggle-button");
-    body.classList.toggle("dark-mode");
-    if (body.classList.contains("dark-mode")) {
-      button.textContent = "Enable Light Mode";
-    } else {
+    body.classList.toggle("light-mode"); // Toggle light-mode class
+    if (body.classList.contains("light-mode")) {
       button.textContent = "Enable Dark Mode";
+    } else {
+      button.textContent = "Enable Light Mode";
     }
   }
 </script>
