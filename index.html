@@ -54,7 +54,7 @@
         .then(response => response.json())
         .then(data => {
           const element = document.getElementById(elementId);
-          if (elementID == "minecraft-java")
+          if (elementId == "minecraft-java")
           {
           if (data.online) {
             // Server is online
@@ -64,7 +64,7 @@
             element.innerHTML = `<b>minecraft java (1.17-1.20.6) -- <span class="red-text"><b>server offline</b></span></b>`;
           } 
           }
-          else if (elementID == "minecraft-bedrock")
+          else if (elementId == "minecraft-bedrock")
           {
           if (data.online) {
             // Server is online
@@ -76,11 +76,11 @@
           }
         })
         .catch(error => {
-          if (elementID == "minecraft-java")
+          if (elementId == "minecraft-java")
           {
             element.innerHTML = `<b>minecraft java (1.17-1.20.6) -- <span class="red-text"><b>couldn't fetch server status</b></span></b>`;
           }
-          else if (elementID == "minecraft-bedrock")
+          else if (elementId == "minecraft-bedrock")
           {
              element.innerHTML = `<b>minecraft bedrock (1.17-1.20.6) -- <span class="red-text"><b>couldn't fetch server status</b></span></b>`;
           }
