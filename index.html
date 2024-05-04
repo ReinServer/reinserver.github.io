@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Welcome to ReinServer</title>
+<title>ReinServer</title>
 <link rel="icon" href="reinserver.github.io/reinserver.ico" type="image/x-icon">
 <style>
   body {
@@ -24,7 +24,7 @@
 </style>
 </head>
 <body>
-  <div class="big-text">welcome to ReinServer</div>
+  <div class="big-text">ReinServer</div>
   <br>
   <br>
   <p>hi, i'm rein.</p>
@@ -36,16 +36,42 @@
   <div class="big-text">ReinServers:</div>
   <br>
   <br>
-  <p><b>minecraft java (1.17-1.20.6)</b></p>
-  <p>play.reinserver.com</p>
+  <p id="minecraft-java">minecraft java (1.17-1.20.6)</p>
   <br>
-  <p><b>minecraft bedrock (1.17-1.20.6)</b></p>
+  <br>
+  <p id="minecraft-bedrock"><b>minecraft bedrock (1.17-1.20.6)</b></p>
   <p><b>IP: </b>play.reinserver.com</p>
   <p><b>Port: </b>19132</p>
   <br>
-  <p><b>unturned -- <span class="red-text"><b>server offline</b></span></b></p>
+  <p id="unturned"><b>unturned -- <span class="red-text"><b>server offline</b></span></b></p>
   <p><b>IP: </b>play.reinserver.com</p>
   <p><b>Port: </b>27015</p>
   <br>
+
+  <script>
+    // Function to fetch server status
+    function fetchServerStatus(url, elementId) {
+      fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          const element = document.getElementById(elementId);
+          if (data.online) {
+            // Server is online
+            element.textContent = `minecraft java (1.17-1.20.6) -- (${data.players.online}/${data.players.max})`;
+          } else {
+            // Server is offline
+            element.innerHTML = `minecraft java (1.17-1.20.6) -- <span class="red-text"><b>server offline</b></span>`;
+          }
+        })
+        .catch(error => {
+          console.error('Error fetching server status:', error);
+        });
+    }
+
+    // Fetch server status for Minecraft Java
+    fetchServerStatus('https://api.mcstatus.io/v2/status/java/play.reinserver.com', 'minecraft-java');
+
+    // You can add similar fetch calls for other servers if needed
+  </script>
 </body>
 </html>
