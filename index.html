@@ -76,7 +76,14 @@
           }
         })
         .catch(error => {
-          element.innerHTML = `<b>minecraft java (1.17-1.20.6) -- <span class="red-text"><b>couldn't fetch server status</b></span></b>`;
+          if (elementID == "minecraft-java")
+          {
+            element.innerHTML = `<b>minecraft java (1.17-1.20.6) -- <span class="red-text"><b>couldn't fetch server status</b></span></b>`;
+          }
+          else if (elementID == "minecraft-bedrock")
+          {
+             element.innerHTML = `<b>minecraft bedrock (1.17-1.20.6) -- <span class="red-text"><b>couldn't fetch server status</b></span></b>`;
+          }
           console.error('Error fetching server status:', error);
         });
     }
