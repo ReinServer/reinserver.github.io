@@ -11,54 +11,20 @@
     text-align: center;
     background-color: black; /* Set initial background color to black */
     color: white; /* Set initial text color to white */
-    transition: background-color 0.5s, color 0.5s; /* Smooth transition for background and text color */
-  }
-  body.light-mode {
-    background-color: white; /* Set background color to white in light mode */
-    color: black; /* Set text color to black in light mode */
   }
   .big-text {
     font-size: 36px;
     font-weight: bold;
     margin-top: 50px;
   }
-  .toggle-button {
-    background-color: white;
-    color: black;
-    border: 2px solid black;
-    padding: 10px 20px;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s, border-color 0.3s; /* Smooth transition for button hover effect */
-  }
-  .light-mode .toggle-button {
-    background-color: black;
-    color: white;
-    border-color: white; /* Change button border color in light mode */
-  }
 </style>
 </head>
-<body class="light-mode"> <!-- Set initial class to light-mode -->
+<body>
   <div class="big-text">Welcome to ReinServer</div>
   <p>Hi, I'm Rein.</p>
   <br>
   <p>And I host dedicated servers for my friends to play on.</p>
   <br>
   <p>If you're one of my friends, feel free to join.</p>
-  
-  <!-- Toggle Button -->
-  <button class="toggle-button" onclick="toggleDarkMode()">Enable Dark Mode</button>
-
-<script>
-  function toggleDarkMode() {
-    var body = document.body;
-    var button = document.querySelector(".toggle-button");
-    body.classList.toggle("light-mode"); // Toggle light-mode class
-    if (body.classList.contains("light-mode")) {
-      button.textContent = "Enable Dark Mode";
-    } else {
-      button.textContent = "Enable Light Mode";
-    }
-  }
-</script>
 </body>
 </html>
