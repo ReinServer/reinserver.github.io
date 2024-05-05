@@ -11,7 +11,7 @@
     text-align: center;
     background-color: black;
     color: white;
-    line-height: 0.5;
+    line-height: 1.2;
   }
   .big-text {
     font-size: 36px;
@@ -29,7 +29,7 @@
   <br>
   <p>hi, i'm rein.</p>
   <br>
-  <p>and i host dedicated servers for my friends to play on.</p>
+  <p>i host dedicated servers for my friends to play on.</p>
   <br>
   <p>if you're one of my friends, feel free to join.</p>
   <br>
@@ -61,7 +61,7 @@
             element.innerHTML = `<b>minecraft java (1.17-1.20.6) -- (${data.players.online}/${data.players.max})</b>`;
           } else {
             // Server is offline
-            element.innerHTML = `<b>minecraft java (1.17-1.20.6) -- <span class="red-text"><b>server offline</b></span></b>`;
+            element.innerHTML = `<b>minecraft java (1.17-1.20.6) -- <span class="red-text">server offline</span></b>`;
           } 
           }
           else if (elementId == "minecraft-bedrock")
@@ -71,7 +71,7 @@
             element.innerHTML = `<b>minecraft bedrock (1.17-1.20.6) -- (${data.players.online}/${data.players.max})</b>`;
           } else {
             // Server is offline
-            element.innerHTML = `<b>minecraft bedrock (1.17-1.20.6) -- <span class="red-text"><b>server offline</b></span></b>`;
+            element.innerHTML = `<b>minecraft bedrock (1.17-1.20.6) -- <span class="red-text">server offline</span></b>`;
           } 
           }
         })
