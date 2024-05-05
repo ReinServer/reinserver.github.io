@@ -21,6 +21,15 @@
   .red-text {
     color: red;
   }
+  .button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: white;
+    color: black;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+  }
 </style>
 </head>
 <body>
@@ -33,66 +42,18 @@
   <br>
   <p>if you're one of my friends, feel free to join.</p>
   <br>
-  <div class="big-text">ReinServers:</div>
+  <button class="button" onclick="goToServersPage()">view servers</button>
   <br>
-  <br>
-  <p id="minecraft-java"><b>minecraft java (1.17-1.20.6) -- fetching server data...</b></p>
-  <p><b>IP: </b>play.reinserver.com</p>
-  <br>
-  <p id="minecraft-bedrock"><b>minecraft bedrock (1.17-1.20.6) -- fetching server data...</b></p>
-  <p><b>IP: </b>play.reinserver.com</p>
-  <p><b>Port: </b>19132</p>
-  <br>
-  <p id="unturned"><b>unturned -- <span class="red-text"><b>server offline</b></span></b></p>
-  <p><b>IP: </b>play.reinserver.com</p>
-  <p><b>Port: </b>27015</p>
-  <br>
+  <button class="button" onclick="goToDowntimesPage()">view upcoming downtimes</button>
+
   <script>
-    // Function to fetch server status
-    function fetchServerStatus(url, elementId) {
-      fetch(url)
-        .then(response => response.json())
-        .then(data => {
-          const element = document.getElementById(elementId);
-          if (elementId == "minecraft-java")
-          {
-          if (data.online) {
-            // Server is online
-            element.innerHTML = `<b>minecraft java (1.17-1.20.6) -- (${data.players.online}/${data.players.max})</b>`;
-          } else {
-            // Server is offline
-            element.innerHTML = `<b>minecraft java (1.17-1.20.6) -- <span class="red-text">server offline</span></b>`;
-          } 
-          }
-          else if (elementId == "minecraft-bedrock")
-          {
-          if (data.online) {
-            // Server is online
-            element.innerHTML = `<b>minecraft bedrock (1.17-1.20.6) -- (${data.players.online}/${data.players.max})</b>`;
-          } else {
-            // Server is offline
-            element.innerHTML = `<b>minecraft bedrock (1.17-1.20.6) -- <span class="red-text">server offline</span></b>`;
-          } 
-          }
-        })
-        .catch(error => {
-          if (elementId == "minecraft-java")
-          {
-            element.innerHTML = `<b>minecraft java (1.17-1.20.6) -- <span class="red-text"><b>couldn't fetch server status</b></span></b>`;
-          }
-          else if (elementId == "minecraft-bedrock")
-          {
-             element.innerHTML = `<b>minecraft bedrock (1.17-1.20.6) -- <span class="red-text"><b>couldn't fetch server status</b></span></b>`;
-          }
-          console.error('Error fetching server status:', error);
-        });
+    function goToServersPage() {
+      window.location.href = 'servers.html';
     }
-
-    // Fetch server status for Minecraft Java
-    fetchServerStatus('https://api.mcstatus.io/v2/status/java/play.reinserver.com', 'minecraft-java');
-    fetchServerStatus('https://api.mcstatus.io/v2/status/java/play.reinserver.com', 'minecraft-bedrock');
-
-    // You can add similar fetch calls for other servers if needed
+        function goToServersPage() {
+      window.location.href = 'downtimes.html';
+    }
   </script>
+
 </body>
 </html>
