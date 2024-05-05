@@ -16,21 +16,39 @@
   .big-text {
     font-size: 36px;
     font-weight: bold;
-    margin-top: 50px;
+    margin-top: 100px;
   }
   .red-text {
     color: red;
   }
+  .button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: black;
+    color: white;
+    border: 2px solid white;
+    cursor: pointer;
+    text-decoration: none;
+    margin-top: 10px;
+  }
 </style>
 </head>
 <body>
-  <div class="big-text">Upcoming downtimes:</div>
+  <div class="big-text">Upcoming Downtimes:</div>
   <br>
   <br>
   <p></p><b>minecraft java (1.17-1.20.6)</b></p>
-  <p class="red-text"><b>10/6/24-20/6/24</b>: Will be overseas and keeping the server running will be a fire hazard</p>
+  <p class="red-text"><b>10/6/24 to 20/6/24</b>: Will be overseas and keeping the server running will be a fire hazard</p>
   <br>
   <p></p><b>minecraft bedrock (1.17-1.20.6)</b></p>
-  <p class="red-text"><b>10/6/24-20/6/24</b>: Will be overseas and keeping the server running will be a fire hazard</p>
+  <p class="red-text"><b>10/6/24 to 20/6/24</b>: Will be overseas and keeping the server running will be a fire hazard</p>
+  <br>
+  <button class="button" onclick="goback()">go back</button>
+
+  <script>
+    function goback() {
+      window.location.href = 'index.html';
+    }
+  </script>
 </body>
 </html>
