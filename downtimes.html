@@ -3,8 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-// this will automically direct you to https you unsecure bitch
-<meta http-equiv="refresh" content="0; url=https://reinserver.com/downtimes.html">
 <title>ReinServer | Downtimes</title>
 <link rel="icon" href="reinserver.github.io/reinserver.ico" type="image/x-icon">
 <style>
@@ -48,6 +46,10 @@
   <button class="button" onclick="goback()">go back</button>
 
   <script>
+        if (window.location.protocol === 'http:') {
+      // Redirect to HTTPS
+      window.location.href = 'https://reinserver.com';
+    }
     function goback() {
       window.location.href = 'index.html';
     }
