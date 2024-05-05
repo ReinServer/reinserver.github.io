@@ -16,10 +16,20 @@
   .big-text {
     font-size: 36px;
     font-weight: bold;
-    margin-top: 50px;
+    margin-top: 100px;
   }
   .red-text {
     color: red;
+  }
+  .button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: black;
+    color: white;
+    border: 2px solid white;
+    cursor: pointer;
+    text-decoration: none;
+    margin-top: 10px;
   }
 </style>
 </head>
@@ -38,8 +48,11 @@
   <p><b>IP: </b>play.reinserver.com</p>
   <p><b>Port: </b>27015</p>
   <br>
+  <button class="button" onclick="goback()">go back</button>
   <script>
-    // Function to fetch server status
+    function goback() {
+      window.location.href = 'index.html';
+    }
     function fetchServerStatus(url, elementId) {
       fetch(url)
         .then(response => response.json())
