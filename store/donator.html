@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ReinServer | Store</title>
+<link rel="icon" href="https://reinserver.com/reinserver.ico" type="image/x-icon">
+<style>
+  body {
+    font-family: Helvetica, sans-serif;
+    text-align: center;
+    background-color: black;
+    color: white;
+    line-height: 1.2;
+  }
+  .big-text {
+    font-size: 100px;
+    font-weight: bold;
+    margin-top: 50px;
+  }
+  .med-text {
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 50px;
+  }
+  @media (max-width: 600px) {
+    .big-text {
+      font-size: 50px; /* Reduced font size for mobile */
+    }
+  }
+  .red-text {
+    color: red;
+  }
+  .role-text {
+    color: rgb(255, 0, 255);
+  }
+  .button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: black;
+    color: white;
+    border: 2px solid white;
+    cursor: pointer;
+    text-decoration: none;
+    margin-top: 10px;
+  }
+</style>
+</head>
+<body>
+  <div class="big-text">Donator Rank:</div>
+  <br>
+  <div class="med-text">Perks:</div>
+  <p>• Pink <span class="role-text">[Donator]</span> role</p>
+  <p>• Access to /workbench (Opens a crafting table anywhere)</p>
+  <p>• Access to /disposal (Easily get rid of items)</p>
+  <p>• Access to /enderchest (Opens your ender chest anywhere)</p>
+  <br>
+  <div class="med-text">$1/month</div>
+  <button class="button" onclick="purchase()">purchase</button>
+
+  <script>
+    function purchase() {
+      alert("lol i haven't finished this yet");
+    }
+    if (window.location.protocol === 'http:') {
+      // Redirect to HTTPS
+      window.location.href = 'https://reinserver.com/store/donator';
+    }
+  </script>
+
+</body>
+</html>
