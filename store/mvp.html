@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ReinServer | Store</title>
+<link rel="icon" href="https://reinserver.com/reinserver.ico" type="image/x-icon">
+<style>
+  body {
+    font-family: Helvetica, sans-serif;
+    text-align: center;
+    background-color: black;
+    color: white;
+    line-height: 1.2;
+  }
+  .big-text {
+    font-size: 100px;
+    font-weight: bold;
+    margin-top: 50px;
+  }
+  .med-text {
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 50px;
+  }
+  @media (max-width: 600px) {
+    .big-text {
+      font-size: 50px; /* Reduced font size for mobile */
+    }
+  }
+  .red-text {
+    color: red;
+  }
+  .role-text {
+    color: rgb(0, 255, 0);
+  }
+  .button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: black;
+    color: white;
+    border: 2px solid white;
+    cursor: pointer;
+    text-decoration: none;
+    margin-top: 10px;
+  }
+</style>
+</head>
+<body>
+  <div class="big-text">MVP Rank:</div>
+  <br>
+  <div class="med-text">Perks:</div>
+  <p>• Blue <span class="role-text">[MVP]</span> role</p>
+  <p>• Access to /enchanting (Access an anvil anywhere)</p>
+  <p>• Access to /smithing (Access a loom anywhere)</p>
+  <p>• Access to /grindstone (Access a cartography table anywhere)</p>
+  <p>• Access to /stonecutter (Access a cartography table anywhere)</p>
+  <p>• Access to /heal (Heal yourself while not in combat, 30 minute cooldown)</p>
+  <p>• 20000 starting claim blocks</p>
+  <p>• 10 homes</p>
+  <p>and all previous perks</p>
+  <br>
+  <div class="med-text">$7/month</div>
+  <button class="button" onclick="purchase()">purchase</button>
+
+  <script>
+    function purchase() {
+      alert("lol i haven't finished this yet");
+    }
+    if (window.location.protocol === 'http:') {
+      // Redirect to HTTPS
+      window.location.href = 'https://reinserver.com/store/mvp';
+    }
+  </script>
+
+</body>
+</html>
