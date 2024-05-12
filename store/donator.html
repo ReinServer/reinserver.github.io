@@ -21,7 +21,7 @@
   .med-text {
     font-size: 30px;
     font-weight: bold;
-    margin-top: 50px;
+    margin-top: 20px;
   }
   @media (max-width: 600px) {
     .big-text {
@@ -44,6 +44,26 @@
     text-decoration: none;
     margin-top: 10px;
   }
+  .awkwardbutton {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: black;
+    color: white;
+    border: 2px solid white;
+    cursor: pointer;
+    text-decoration: none;
+    margin-top: 50px;
+  }
+  }
+  .med-text-inline {
+    display: inline-block;
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 50px;
+  }
+  .text-inline {
+    display: inline-block;
+  }
 </style>
 </head>
 <body>
@@ -57,22 +77,40 @@
   <p>• 5000 starting claim blocks</p>
   <p>• 5 homes</p>
   <br>
-  <div class="med-text">$1/month</div>
-  <button class="button" onclick="purchase()">purchase</button>
+  <div class="med-text">$1/month, </div>
+  <p>renew on the first of every month</p>
+  <div class="med-text">or $10,</div>
+  <p>one time payment</p>
   <br>
-  <button class="button" onclick="goback()">go back</button>
+  <button class="button" onclick="purchasemonthly()">purchase monthly</button>
+  <br>
+  <button class="button" onclick="purchasepermanently()">purchase permanent</button>
+  <br>
+  <button class="awkwardbutton" onclick="goback()">go back</button>
 
   <script>
     function goback() {
       window.location.href = 'index.html';
     }
-    function purchase() {
-      alert("lol i haven't finished this yet");
+    function purchasemonthly() {
+      setCookie("rankWanted", "donatormonthly");
+      window.location.href = 'payment.html';
+    }
+    function purchasepermanently() {
+      setCookie("rankWanted", "donatorpermanently");
+      window.location.href = 'payment.html';
+    }
+    function setCookie(name, value) {
+      var date = new Date();
+      date.setTime(date.getTime() + (24 * 60 * 60 * 1000));
+      var expires = "expires=" + date.toUTCString();
+      document.cookie = name + "=" + value + ";" + expires + ";path=/";
     }
     if (window.location.protocol === 'http:') {
       // Redirect to HTTPS
       window.location.href = 'https://reinserver.com/store/donator';
     }
+
   </script>
 
 </body>
