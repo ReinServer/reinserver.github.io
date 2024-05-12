@@ -1,0 +1,167 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ReinServer | Purchase</title>
+<link rel="icon" href="https://reinserver.com/reinserver.ico" type="image/x-icon">
+<style>
+  body {
+    font-family: Helvetica, sans-serif;
+    text-align: center;
+    background-color: black;
+    color: white;
+    line-height: 1.2;
+  }
+  .big-text {
+    font-size: 100px;
+    font-weight: bold;
+    margin-top: 50px;
+  }
+  .med-text {
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 20px;
+  }
+  @media (max-width: 600px) {
+    .big-text {
+      font-size: 50px; /* Reduced font size for mobile */
+    }
+  }
+  .red-text {
+    color: red;
+  }
+  .role-text {
+    color: rgb(255, 0, 255);
+  }
+  .button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: black;
+    color: white;
+    border: 2px solid white;
+    cursor: pointer;
+    text-decoration: none;
+    margin-top: 10px;
+  }
+  .input {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: black;
+    color: white;
+    border: 2px solid white;
+    cursor: pointer;
+    text-decoration: none;
+    margin-top: 10px;
+  }
+  .awkwardbutton {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: black;
+    color: white;
+    border: 2px solid white;
+    cursor: pointer;
+    text-decoration: none;
+    margin-top: 50px;
+  }
+  
+  .med-text-inline {
+    display: inline-block;
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 50px;
+  }
+  .text-inline {
+    display: inline-block;
+  }
+</style>
+</head>
+<body>
+  <div class="big-text">Complete your purchase:</div>
+  <br>
+  <div class="med-text">You've ordered:</div>
+  <p id="roleName"><b>Donator Role - 1 Month</b></p>
+  <p id="rolePrice">$1 - renews monthly</p>
+  <br>
+  <div class="med-text">Things to note:</div>
+  <p id="roleTemp1">• You have to renew your rank on the first of every month</p>
+  <p id="roleTemp2">• You have 5 days after your subscription ends to renew your subscription</p>
+  <p id="roleTemp3">• If you do not renew your subscription after 5 days you will lose your rank and extra homes</p>
+  <p id="roleTemp4">• You only get your role's claim blocks upon the first time you subscribe</p>
+  <p>• Allow up to 48 hours for your rank to be added</p>
+  <p>• You will get a full refund if your rank is not applied within 7 days</p>
+  <p>• You will not get a refund if you are banned for a valid reason during your subscription</p>
+  <br>
+  <p>everything looks good?</p>
+  <input class="input" type="text" placeholder="Enter your Minecraft username">
+  <button class="button" id="MCUsername" onclick="purchase()">complete your purchase</button>
+  <br>
+  <button class="awkwardbutton" onclick="goback()">go back</button>
+
+  <script>
+    function purchase(){
+      alert("Send this to reinard via whatsapp (9477 4268)\n Username: " + MCUsername.value + "\n Role: " + cookieValue);
+    }
+    function goback() {
+      window.location.href = 'index.html';
+    }
+  function getCookie(name) {
+  var decodedCookie = decodeURIComponent(document.cookie);
+  var cookieArray = decodedCookie.split(';');
+  for (var i = 0; i < cookieArray.length; i++) {
+    var cookie = cookieArray[i].trim();
+    if (cookie.startsWith(name + '=')) {
+      return cookie.substring(name.length + 1);
+    }
+  }
+  return "";
+}
+
+// Get the value of the "myCookie" cookie
+var cookieValue = getCookie("rankWanted");
+
+// Modify the content of the body based on the cookie value
+if (cookieValue === "donatormonthly") {
+
+} else if (cookieValue === "donatorpermanent") {
+  roleName.innerHTML = "<b>Permanent Donator Role</b>";
+  rolePrice.innerHTML = "$10 - one time payment";
+  roleTemp4.innerHTML = "• You only get your 5000 claim blocks once, on subscription";
+  roleTemp1.parentNode.removeChild(roleTemp1);
+  roleTemp2.parentNode.removeChild(roleTemp2);
+  roleTemp3.parentNode.removeChild(roleTemp3);
+}else if (cookieValue === "vipmonthly") {
+  roleName.innerHTML = "<b>VIP Role - 1 Month</b>";
+  rolePrice.innerHTML = "$5 - renews monthly";
+  roleTemp4.innerHTML = "• You only get your 10000 claim blocks once, on subscription";
+}else if (cookieValue === "vippermanent") {
+  roleName.innerHTML = "<b>Permanent VIP Role</b>";
+  rolePrice.innerHTML = "$35 - one time payment";
+  roleTemp4.innerHTML = "• You only get your 10000 claim blocks once, on subscription";
+  roleTemp1.parentNode.removeChild(roleTemp1);
+  roleTemp2.parentNode.removeChild(roleTemp2);
+  roleTemp3.parentNode.removeChild(roleTemp3);
+}else if (cookieValue === "mvpmonthly") {
+  roleName.innerHTML = "<b>MVP Role - 1 Month</b>";
+  rolePrice.innerHTML = "$10 - renews monthly";
+  roleTemp4.innerHTML = "• You only get your 20000 claim blocks once, on subscription";
+}else if (cookieValue === "mvppermanent") {
+  roleName.innerHTML = "<b>Permanent MVP Role</b>";
+  rolePrice.innerHTML = "$50 - one time payment";
+  roleTemp4.innerHTML = "• You only get your 20000 claim blocks once, on subscription";
+  roleTemp1.parentNode.removeChild(roleTemp1);
+  roleTemp2.parentNode.removeChild(roleTemp2);
+  roleTemp3.parentNode.removeChild(roleTemp3);
+}else{
+  window.location.href = 'https://reinserver.com/store
+}
+    if (window.location.protocol === 'http:') {
+      // Redirect to HTTPS
+      window.location.href = 'https://reinserver.com/store/purchase';
+    }
+
+  </script>
+
+</body>
+</html>
