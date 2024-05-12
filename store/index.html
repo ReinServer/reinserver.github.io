@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ReinServer</title>
+<link rel="icon" href="https://reinserver.com/reinserver.ico" type="image/x-icon">
+<style>
+  body {
+    font-family: Helvetica, sans-serif;
+    text-align: center;
+    background-color: black;
+    color: white;
+    line-height: 1.2;
+  }
+  .big-text {
+    font-size: 100px;
+    font-weight: bold;
+    margin-top: 50px;
+  }
+  @media (max-width: 600px) {
+    .big-text {
+      font-size: 50px; /* Reduced font size for mobile */
+    }
+    .desktop-version {
+      display: none;
+    }
+    .mobile-version {
+      display: block;
+    }
+  }
+  .med-text {
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 50px;
+  }
+  .red-text {
+    color: red;
+  }
+  .button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: black;
+    color: white;
+    border: 2px solid white;
+    cursor: pointer;
+    text-decoration: none;
+    margin-top: 10px;
+  }
+  .purchasebutton {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: black;
+    color: white;
+    border: 2px solid white;
+    cursor: pointer;
+    text-decoration: none;
+    margin-top: 10px;
+    width: 250px;
+  }
+  .text {
+    display: inline-block; /* Display text inline */
+    margin-right: 10px; /* Add margin between text and button */
+  }
+</style>
+</head>
+<body>
+  <div class="big-text">Store:</div>
+  <br>
+  <br>
+  <p>here you can donate a certain amount of money to recieve perks</p>
+  <br>
+  <p>all money donated goes to funding better server hardware, <b>extra money goes to charity.</b></p>
+  <br>
+  <div class="med-text">Monthly:</div>
+  <div class="desktop-version">
+    <button class="purchasebutton" onclick=purchaseDonator()>Donator Rank - <b>$1</b></button>
+    <button class="purchasebutton" onclick=purchaseVIP()>VIP Rank - <b>$3</b></button>
+    <button class="purchasebutton" onclick=purchaseMVP()>MVP Rank - <b>$7</b></button>
+    <br>
+    <div class="med-text">Permanent:</div>
+    <p>unavailable</p>
+  </div>
+  <div class="mobile-version">
+    <button class="purchasebutton" onclick=purchaseDonator()>Donator Rank - <b>$1</b></button>
+    <br>
+    <button class="purchasebutton" onclick=purchaseVIP()>VIP Rank - <b>$3</b></button>
+    <br>
+    <button class="purchasebutton" onclick=purchaseMVP()>MVP Rank - <b>$7</b></button>
+    <br>
+    <div class="med-text">Permanent:</div>
+    <p>unavailable</p>
+  </div>
+
+  <script>
+    function purchaseDonator() {
+      window.location.href = 'donator.html';
+    }
+    function purchaseVIP() {
+      window.location.href = 'vip.html';
+    }
+    function purchaseMVP() {
+      window.location.href = 'mvp.html';
+    }
+    if (window.location.protocol === 'http:') {
+      // Redirect to HTTPS
+      window.location.href = 'https://reinserver.com/store';
+    }
+    window.addEventListener('resize', function() {
+    if (window.innerWidth <= 600) {
+      // Show mobile version
+      document.querySelector('.desktop-version').style.display = 'none';
+      document.querySelector('.mobile-version').style.display = 'block';
+    } else {
+      // Show desktop version
+      document.querySelector('.desktop-version').style.display = 'block';
+      document.querySelector('.mobile-version').style.display = 'none';
+    }
+  });
+
+  // Trigger the resize event on page load to ensure correct initial state
+  window.dispatchEvent(new Event('resize'));
+  </script>
+
+</body>
+</html>
