@@ -76,7 +76,7 @@
   <br>
   <button class="button" onclick="purchasemonthly()">purchase monthly</button>
   <br>
-  <button class="button" onclick="purchasepermanent()">purchase permanent</button>
+  <button class="button" onclick="purchasepermanently()">purchase permanent</button>
   <br>
   <button class="awkwardbutton" onclick="goback()">go back</button>
 
@@ -89,7 +89,7 @@
       window.location.href = 'purchase.html';
     }
     function purchasepermanently() {
-      setCookie("rankWanted", "vippermanently");
+      setCookie("rankWanted", "vippermanent");
       window.location.href = 'purchase.html';
     }
     function setCookie(name, value) {
