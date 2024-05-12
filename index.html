@@ -51,13 +51,17 @@
   <button class="button" onclick="goToServersPage()">view servers</button>
   <br>
   <button class="button" onclick="goToDowntimesPage()">view upcoming downtimes</button>
-
+  <br>
+  <button class="button" onclick="goToStorePage()">view store</button>
   <script>
     function goToServersPage() {
       window.location.href = 'servers.html';
     }
     function goToDowntimesPage() {
       window.location.href = 'downtimes.html';
+    }
+    function goToStorePage() {
+      window.location.href = 'store/index.html';
     }
     if (window.location.protocol === 'http:') {
       // Redirect to HTTPS
