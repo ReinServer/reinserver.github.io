@@ -59,17 +59,34 @@
   <p>• 7 homes</p>
   <p>and all previous perks</p>
   <br>
-  <div class="med-text">$3/month</div>
-  <button class="button" onclick="purchase()">purchase</button>
+  <div class="med-text">$5/month, </div>
+  <p>renew on the first of every month</p>
+  <div class="med-text">or $35,</div>
+  <p>one time payment</p>
   <br>
-  <button class="button" onclick="goback()">go back</button>
+  <button class="button" onclick="purchasemonthly()">purchase monthly</button>
+  <br>
+  <button class="button" onclick="purchasepermanently()">purchase permanent</button>
+  <br>
+  <button class="awkwardbutton" onclick="goback()">go back</button>
 
   <script>
     function goback() {
       window.location.href = 'index.html';
     }
-    function purchase() {
-      alert("lol i haven't finished this yet");
+    function purchasemonthly() {
+      setCookie("rankWanted", "vipmonthly");
+      window.location.href = 'payment.html';
+    }
+    function purchasepermanently() {
+      setCookie("rankWanted", "vippermanently");
+      window.location.href = 'payment.html';
+    }
+    function setCookie(name, value) {
+      var date = new Date();
+      date.setTime(date.getTime() + (24 * 60 * 60 * 1000));
+      var expires = "expires=" + date.toUTCString();
+      document.cookie = name + "=" + value + ";" + expires + ";path=/";
     }
     if (window.location.protocol === 'http:') {
       // Redirect to HTTPS
