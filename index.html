@@ -24,7 +24,10 @@
     }
   }
   .red-text {
-    color: red;
+    color: rgb(0, 255, 0);
+  }
+  .green-text {
+    color: green;
   }
   .button {
     display: inline-block;
@@ -52,7 +55,7 @@
   <br>
   <button class="button" onclick="goToDowntimesPage()">view upcoming downtimes</button>
   <br>
-  <button class="button" onclick="goToStorePage()">view store</button>
+  <button class="button" onclick="goToStorePage()">view store -- <span class="green-text"> <b>SALE!</b> </span></button>
   <script>
     function goToServersPage() {
       window.location.href = 'servers.html';
