@@ -23,6 +23,12 @@
     font-weight: bold;
     margin-top: 50px;
   }
+  .sale-text {
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 50px;
+    color: rgb(0,255,0)
+  }
   @media (max-width: 600px) {
     .big-text {
       font-size: 50px; /* Reduced font size for mobile */
@@ -71,7 +77,7 @@
   <br>
   <div class="med-text">$10/month, </div>
   <p>renew on the first of every month</p>
-  <div class="med-text">or $50,</div>
+  <div class="med-text">or <s>$50</s>, <span class="sale-text">SALE! $45</span></div>
   <p>one time payment</p>
   <br>
   <button class="button" onclick="purchasemonthly()">purchase monthly</button>
