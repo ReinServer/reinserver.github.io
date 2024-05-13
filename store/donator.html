@@ -64,6 +64,12 @@
   .text-inline {
     display: inline-block;
   }
+.sale-text{
+      font-size: 30px;
+    font-weight: bold;
+    margin-top: 20px;
+  color: rgb(0,255,0);
+}
 </style>
 </head>
 <body>
@@ -79,7 +85,7 @@
   <br>
   <div class="med-text">$1/month, </div>
   <p>renew on the first of every month</p>
-  <div class="med-text">or $10,</div>
+  <div class="med-text">or <s>$10</s> <span class="sale-text">SALE! $9,</div>
   <p>one time payment</p>
   <br>
   <button class="button" onclick="purchasemonthly()">purchase monthly</button>
