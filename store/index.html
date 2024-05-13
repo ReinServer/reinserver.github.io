@@ -34,6 +34,12 @@
     font-weight: bold;
     margin-top: 50px;
   }
+  .sale-text {
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 50px;
+    color: rgb(0,255,0);
+  }
   .red-text {
     color: red;
   }
@@ -62,10 +68,16 @@
     display: inline-block; /* Display text inline */
     margin-right: 10px; /* Add margin between text and button */
   }
+  .text {
+    display: inline-block; /* Display text inline */
+    margin-right: 10px; /* Add margin between text and button */
+    color: rgb(0,255,0);
+  }
 </style>
 </head>
 <body>
   <div class="big-text">Store:</div>
+  <div class="sale-text">SALE! All permanent ranks 10% off until end-of-week</div>
   <br>
   <br>
   <p>here you can donate a certain amount of money to recieve perks</p>
@@ -79,9 +91,9 @@
     <button class="purchasebutton" onclick=purchaseMVP()>MVP Rank - <b>$10/month</b></button>
     <br>
     <div class="med-text">Permanent:</div>
-    <button class="purchasebutton" onclick=purchaseDonator()>Donator Rank - <b>$10</b></button>
-    <button class="purchasebutton" onclick=purchaseVIP()>VIP Rank - <b>$35</b></button>
-    <button class="purchasebutton" onclick=purchaseMVP()>MVP Rank - <b>$50</b></button>
+    <button class="purchasebutton" onclick=purchaseDonator()>Donator Rank - <b><s>$10</s> <span class="green-text">$9</span></b></button>
+    <button class="purchasebutton" onclick=purchaseVIP()>VIP Rank - <b><s>$30</s> <span class="green-text">$27</span></button>
+    <button class="purchasebutton" onclick=purchaseMVP()>MVP Rank - <b><s>$50</s> <span class="green-text">$45</span></button>
   </div>
   <div class="mobile-version">
     <button class="purchasebutton" onclick=purchaseDonator()>Donator Rank - <b>$1/month</b></button>
@@ -91,11 +103,11 @@
     <button class="purchasebutton" onclick=purchaseMVP()>MVP Rank - <b>$10/month</b></button>
     <br>
     <div class="med-text">Permanent:</div>
-    <button class="purchasebutton" onclick=purchaseDonator()>Donator Rank - <b>$10</b></button>
+    <button class="purchasebutton" onclick=purchaseDonator()>Donator Rank - <b><s>$10</s> <span class="green-text">$9</span></b></button>
     <br>
-    <button class="purchasebutton" onclick=purchaseVIP()>VIP Rank - <b>$35</b></button>
+    <button class="purchasebutton" onclick=purchaseVIP()>VIP Rank - <b><s>$30</s> <span class="green-text">$27</span></button>
     <br>
-    <button class="purchasebutton" onclick=purchaseMVP()>MVP Rank - <b>$50</b></button>
+    <button class="purchasebutton" onclick=purchaseMVP()>MVP Rank - <b><s>$50</s> <span class="green-text">$45</span></button>
   </div>
   <br>
   <button class="button" onclick="goback()">go back</button>
