@@ -72,26 +72,26 @@
           const element = document.getElementById(elementId);
           if (elementId == "minecraft-java")
           {
-          if (data.online) {
+            if (data.online) {
             // Server is online
             element.innerHTML = `<b>minecraft java (1.17-1.20.6) -- (${data.players.online}/${data.players.max})</b>`;
-          } else {
+            } else {
             // Server is offline
             element.innerHTML = `<b>minecraft java (1.17-1.20.6) -- <span class="red-text">server offline</span></b>`;
-          } 
+            } 
           }
           else if (elementId == "minecraft-smp")
           {
-          if (data.online) {
+            if (data.online) {
             // Server is online
-           element.innerHTML = `<b>minecraft java (smp) (1.17-1.20.6) -- (${data.players.online}/${data.players.max})</b>`;
-          }
-          else {
+             element.innerHTML = `<b>minecraft java (smp) (1.17-1.20.6) -- (${data.players.online}/${data.players.max})</b>`;
+            }
+            else {
             // Server is offline
            element.innerHTML = `<b>minecraft java (smp) (1.17-1.20.6) -- <span class="red-text">server offline</span></b>`;
+            }
           }
-          }
-          else if (elementId == "minecraft-java")
+          else if (elementId == "minecraft-bedrock")
           {
           if (data.online) {
             // Server is online
@@ -118,8 +118,8 @@
     }
 
     // Fetch server status for Minecraft Java
-    fetchServerStatus('https://api.mcstatus.io/v2/status/java/play.reinserver.com', 'reinserver-lobby');
-    fetchServerStatus('https://api.mcstatus.io/v2/status/java/play.reinserver.com:25566', 'reinserver-lobby');
+    fetchServerStatus('https://api.mcstatus.io/v2/status/java/play.reinserver.com', 'minecraft-java');
+    fetchServerStatus('https://api.mcstatus.io/v2/status/java/play.reinserver.com:25566', 'reinserver-smp');
     fetchServerStatus('https://api.mcstatus.io/v2/status/java/play.reinserver.com', 'minecraft-bedrock');
 
     // You can add similar fetch calls for other servers if needed
