@@ -42,17 +42,21 @@
   <div class="big-text">ReinServers:</div>
   <br>
   <br>
-  <p id="reinserver-network"><b>reinserver network (1.17-1.20.6) -- fetching server data...</b></p>
+  <p><b>reinserver network (1.17-1.20.6)</b></p>
+  <p id="reinserver-network">fetching server data...</p>
   <p><b>IP: </b>play.reinserver.com</p>
   <p><b>Bedrock Port: </b>19132</p>
   <br>
-  <p id="reinserver-smp"><b>reinserver network (MN101 SMP) (1.17-1.20.6) -- fetching server data...</b></p>
+  <p><b>reinserver network (MN101 SMP) (1.17-1.20.6)</b></p>
+  <p id="reinserver-smp">fetching server data...</p>
   <p><b>IP: </b>play.reinserver.com:25566</p>
   <br>
-  <p id="reinserver-creative"><b>reinserver network (Creative SMP) (1.17-1.20.6) -- <span class="red-text"><b>server offline</b></span></b></p>
+  <p><b>reinserver network (Creative SMP) (1.17-1.20.6)</b></p>
+  <p id="reinserver-creative"><span class="red-text"><b>server offline</b></span></p>
   <p><b>IP: </b>play.reinserver.com:25567</p>
   <br>
-  <p id="unturned"><b>unturned -- <span class="red-text"><b>server offline</b></span></b></p>
+  <p><b>unturned</b></p>
+  <p id="unturned"><span class="red-text"><b>server offline</b></span></p>
   <p><b>IP: </b>play.reinserver.com</p>
   <p><b>Port: </b>27015</p>
   <br>
@@ -74,32 +78,32 @@
           {
             if (data.online) {
             // Server is online
-            element.innerHTML = `<b>reinserver network (1.17-1.20.6) -- (${data.players.online}/${data.players.max})</b>`;
+            element.innerHTML = `<b>(${data.players.online}/${data.players.max})</b>`;
             } else {
             // Server is offline
-            element.innerHTML = `<b>reinserver network (1.17-1.20.6) -- <span class="red-text">server offline</span></b>`;
+            element.innerHTML = `<span class="red-text">server offline</span></b>`;
             } 
           }
           else if (elementId == "reinserver-smp")
           {
             if (data.online) {
             // Server is online
-             element.innerHTML = `<b>reinserver network (MN101 SMP) (1.17-1.20.6) -- (${data.players.online}/${data.players.max})</b>`;
+             element.innerHTML = `<b>(${data.players.online}/${data.players.max})</b>`;
             }
             else {
             // Server is offline
-           element.innerHTML = `<b>reinserver network (MN101 SMP) (1.17-1.20.6) -- <span class="red-text">server offline</span></b>`;
+           element.innerHTML = `<b><span class="red-text">server offline</span></b>`;
             }
           }
         })
         .catch(error => {
           if (elementId == "reinserver-network")
           {
-            element.innerHTML = `<b>reinserver network (1.17-1.20.6) -- <span class="red-text"><b>couldn't fetch server status</b></span></b>`;
+            element.innerHTML = `<b><span class="red-text"><b>couldn't fetch server status</b></span></b>`;
           }
           else if (elementId == "reinserver-smp")
           {
-             element.innerHTML = `<b>reinserver network (MN101 SMP) (1.17-1.20.6) -- <span class="red-text"><b>couldn't fetch server status</b></span></b>`;
+             element.innerHTML = `<b><span class="red-text"><b>couldn't fetch server status</b></span></b>`;
           }
           console.error('Error fetching server status:', error);
           // console.error('reinard ur fucking code is shit it BROKE u retard')
