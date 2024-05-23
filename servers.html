@@ -48,6 +48,11 @@
   <p><b>IP: </b>play.reinserver.com</p>
   <p><b>Bedrock Port: </b>19132</p>
   <br>
+  <p><b>reinserver network (Lobby) (1.17-1.20.6)</b></p>
+  <p id="reinserver-lobby">fetching server data...</p>
+    <br>
+  <p><b>IP: </b>play.reinserver.com</p>
+  <br>
   <p><b>reinserver network (MN101 SMP) (1.17-1.20.6)</b></p>
   <p id="reinserver-smp">fetching server data...</p>
   <p><b>IP: </b>play.reinserver.com:25566</p>
@@ -98,6 +103,17 @@
            element.innerHTML = `<b><span class="red-text">server offline</span></b>`;
             }
           }
+            else if (elementId == "reinserver-lobby")
+          {
+            if (data.online) {
+            // Server is online
+            element.innerHTML = `<b>${data.players.online}/${data.players.max} online</b>`;
+            }
+            else {
+            // Server is offline
+           element.innerHTML = `<b><span class="red-text">server offline</span></b>`;
+            }
+          }
         })
         .catch(error => {
           if (elementId == "reinserver-network")
@@ -116,6 +132,7 @@
     // Fetch server status for Minecraft Java
     fetchServerStatus('https://api.mcstatus.io/v2/status/java/play.reinserver.com', 'reinserver-network');
     fetchServerStatus('https://api.mcstatus.io/v2/status/java/play.reinserver.com:25566', 'reinserver-smp');
+        fetchServerStatus('https://api.mcstatus.io/v2/status/java/play.reinserver.com:30066', 'reinserver-lobby');
 
     // You can add similar fetch calls for other servers if needed
   </script>
