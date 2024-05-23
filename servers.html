@@ -42,15 +42,15 @@
   <div class="big-text">ReinServers:</div>
   <br>
   <br>
-  <p id="minecraft-java"><b>reinserver network java (lobby) (1.17-1.20.6) -- fetching server data...</b></p>
+  <p id="reinserver-network"><b>reinserver network (1.17-1.20.6) -- fetching server data...</b></p>
   <p><b>IP: </b>play.reinserver.com</p>
+  <p><b>Bedrock Port: </b>19132</p>
   <br>
-  <p id="minecraft-smp"><b>reinserver network java (smp) (1.17-1.20.6) -- fetching server data...</b></p>
+  <p id="reinserver-smp"><b>reinserver network (MN101 SMP) (1.17-1.20.6) -- fetching server data...</b></p>
   <p><b>IP: </b>play.reinserver.com:25566</p>
   <br>
-  <p id="minecraft-bedrock"><b>minecraft bedrock (1.17-1.20.6) -- fetching server data...</b></p>
-  <p><b>IP: </b>play.reinserver.com</p>
-  <p><b>Port: </b>19132</p>
+  <p id="reinserver-creative"><b>reinserver network (Creative SMP) (1.17-1.20.6) -- <span class="red-text"><b>server offline</b></span></b></p>
+  <p><b>IP: </b>play.reinserver.com:25567</p>
   <br>
   <p id="unturned"><b>unturned -- <span class="red-text"><b>server offline</b></span></b></p>
   <p><b>IP: </b>play.reinserver.com</p>
@@ -70,47 +70,36 @@
         .then(response => response.json())
         .then(data => {
           const element = document.getElementById(elementId);
-          if (elementId == "minecraft-java")
+          if (elementId == "reinserver-network")
           {
             if (data.online) {
             // Server is online
-            element.innerHTML = `<b>minecraft java (1.17-1.20.6) -- (${data.players.online}/${data.players.max})</b>`;
+            element.innerHTML = `<b>reinserver network (1.17-1.20.6) -- (${data.players.online}/${data.players.max})</b>`;
             } else {
             // Server is offline
-            element.innerHTML = `<b>minecraft java (1.17-1.20.6) -- <span class="red-text">server offline</span></b>`;
+            element.innerHTML = `<b>reinserver network (1.17-1.20.6) -- <span class="red-text">server offline</span></b>`;
             } 
           }
-          else if (elementId == "minecraft-smp")
+          else if (elementId == "reinserver-smp")
           {
             if (data.online) {
             // Server is online
-             element.innerHTML = `<b>minecraft java (smp) (1.17-1.20.6) -- (${data.players.online}/${data.players.max})</b>`;
+             element.innerHTML = `<b>reinserver network (MN101 SMP) (1.17-1.20.6) -- (${data.players.online}/${data.players.max})</b>`;
             }
             else {
             // Server is offline
-           element.innerHTML = `<b>minecraft java (smp) (1.17-1.20.6) -- <span class="red-text">server offline</span></b>`;
+           element.innerHTML = `<b>reinserver network (MN101 SMP) (1.17-1.20.6) -- <span class="red-text">server offline</span></b>`;
             }
-          }
-          else if (elementId == "minecraft-bedrock")
-          {
-          if (data.online) {
-            // Server is online
-           element.innerHTML = `<b>minecraft bedrock (1.17-1.20.6) -- (${data.players.online}/${data.players.max})</b>`;
-          }
-          else {
-            // Server is offline
-            element.innerHTML = `<b>minecraft bedrock (1.17-1.20.6) -- <span class="red-text">server offline</span></b>`;
-          } 
           }
         })
         .catch(error => {
-          if (elementId == "minecraft-java")
+          if (elementId == "reinserver-network")
           {
-            element.innerHTML = `<b>minecraft java (1.17-1.20.6) -- <span class="red-text"><b>couldn't fetch server status</b></span></b>`;
+            element.innerHTML = `<b>reinserver network (1.17-1.20.6) -- <span class="red-text"><b>couldn't fetch server status</b></span></b>`;
           }
-          else if (elementId == "minecraft-bedrock")
+          else if (elementId == "reinserver-smp")
           {
-             element.innerHTML = `<b>minecraft bedrock (1.17-1.20.6) -- <span class="red-text"><b>couldn't fetch server status</b></span></b>`;
+             element.innerHTML = `<b>reinserver network (MN101 SMP) (1.17-1.20.6) -- <span class="red-text"><b>couldn't fetch server status</b></span></b>`;
           }
           console.error('Error fetching server status:', error);
           // console.error('reinard ur fucking code is shit it BROKE u retard')
@@ -118,9 +107,8 @@
     }
 
     // Fetch server status for Minecraft Java
-    fetchServerStatus('https://api.mcstatus.io/v2/status/java/play.reinserver.com', 'minecraft-java');
-    fetchServerStatus('https://api.mcstatus.io/v2/status/java/play.reinserver.com:25566', 'minecraft-smp');
-    fetchServerStatus('https://api.mcstatus.io/v2/status/java/play.reinserver.com', 'minecraft-bedrock');
+    fetchServerStatus('https://api.mcstatus.io/v2/status/java/play.reinserver.com', 'reinserver-network');
+    fetchServerStatus('https://api.mcstatus.io/v2/status/java/play.reinserver.com:25566', 'reinserver-smp');
 
     // You can add similar fetch calls for other servers if needed
   </script>
