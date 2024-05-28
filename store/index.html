@@ -77,7 +77,10 @@
 </head>
 <body>
   <div class="big-text">Store:</div>
-  <br>
+  <p><b>NOTE: this store has been deprecated. you should only be using this store if you want to pay in cash.</b></p>
+  <p>to pay online, visit our new store at store.reinserver.com</p>
+    <br>
+  <button class="button" onclick="goToStorePage()">view new store</button>
   <br>
   <p>here you can donate a certain amount of money to recieve perks</p>
   <br>
@@ -148,6 +151,9 @@
   <button class="button" onclick="goback()">go back</button>
 
   <script>
+    function goToStorePage() {
+      window.location.href = 'https://store.reinserver.com';
+    }
     function goback() {
       window.location.href = 'https://reinserver.com';
     }
