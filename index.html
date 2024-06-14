@@ -38,6 +38,7 @@
     cursor: pointer;
     text-decoration: none;
     margin-top: 10px;
+    width: 250px;
   }
 </style>
 </head>
@@ -55,7 +56,14 @@
   <br>
   <button class="button" onclick="goToDowntimesPage()">view upcoming downtimes</button>
   <br>
+  <button class="button" onclick="goToRulesPage()">view network rules</button>
+  <br>
   <button class="button" onclick="goToStorePage()">view store</button>
+  <br>
+  <br>
+  <button class="button" onclick="joinWhatsApp()">join the whatsapp</button>
+  <br>
+  <button class="button" onclick="goToDiscord()">join the discord</button>
   <script>
     function goToServersPage() {
       window.location.href = 'https://reinserver.com/servers';
@@ -63,8 +71,17 @@
     function goToDowntimesPage() {
       window.location.href = 'https://reinserver.com/downtimes';
     }
+    function goToRulesPage() {
+      window.location.href = 'https://reinserver.com/rules';
+    }
     function goToStorePage() {
       window.location.href = 'https://store.reinserver.com';
+    }
+    function joinWhatsApp() {
+      window.location.href = 'https://chat.whatsapp.com/ED8hayqg2CSEHp45uJfVVM';
+    }
+      function joinDiscord() {
+      window.location.href = 'https://discord.gg/T4ExvZutws';
     }
     if (window.location.protocol === 'http:') {
       // Redirect to HTTPS
