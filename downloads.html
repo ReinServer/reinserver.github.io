@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ReinServer | Downloads</title>
+<link rel="icon" href="https://reinserver.com/reinserver.ico" type="image/x-icon">
+<style>
+  body {
+    font-family: Helvetica, sans-serif;
+    text-align: center;
+    background-color: black;
+    color: white;
+    line-height: 1.2;
+  }
+  .big-text {
+    font-size: 100px;
+    font-weight: bold;
+    margin-top: 50px;
+  }
+  .med-text {
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 50px;
+  }
+  @media (max-width: 600px) {
+    .big-text {
+      font-size: 50px; /* Reduced font size for mobile */
+    }
+  }
+  .red-text {
+    color: red;
+  }
+  .green-text {
+    color: rgb(0,255,0);
+  }
+  .button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: black;
+    color: white;
+    border: 2px solid white;
+    cursor: pointer;
+    text-decoration: none;
+    margin-top: 10px;
+    width: 200px;
+  }
+</style>
+</head>
+<body>
+  <div class="big-text">World Downloads</div>
+  <br>
+  <br>
+  <p>here you can download some of the world maps for our servers</p>
+  <br>
+  <p>do note that these downloads are <b>java only</b></p>
+  <br>
+  <div class="med-text">world downloads:</div>
+  <button class="button" onclick="downloadCreative()">creative smp - 31/5/24 (5.1MB)</button>
+  <br>
+  <button class="button" onclick="downloadLifeSteal()">lifesteal s1 - 26/6/24 (2.3GB)</button>
+  <br>
+  button class="button" onclick="goback()">go back</button>
+  <script>
+    function downloadLifeSteal() {
+      window.location.href = 'https://drive.google.com/file/d/1fi2MXNAs2HNralQKPcYmMW3eHXKRuiyM/view?usp=drive_link';
+    }
+    function downloadCreative() {
+      window.location.href = 'https://drive.google.com/file/d/1c2pZnEC_S5p1ns5y6kEqaypAtN87TtIz/view?usp=sharing';
+    }
+    if (window.location.protocol === 'http:') {
+      // Redirect to HTTPS
+      window.location.href = 'https://reinserver.com/downloads';
+    }
+    function goback() {
+      window.location.href = 'https://reinserver.com';
+    }
+  </script>
+
+</body>
+</html>
