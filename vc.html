@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ReinServer | ReinServers</title>
+<link rel="icon" href="https://reinserver.com/reinserver.ico" type="image/x-icon">
+<style>
+  body {
+    font-family: Helvetica, sans-serif;
+    text-align: center;
+    background-color: black;
+    color: white;
+    line-height: 1.2;
+  }
+  .big-text {
+    font-size: 100px;
+    font-weight: bold;
+    margin-top: 50px;
+  }
+  @media (max-width: 600px) {
+    .big-text {
+      font-size: 50px; /* Reduced font size for mobile */
+    }
+  }
+  .red-text {
+    color: red;
+  }
+  .button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: black;
+    color: white;
+    border: 2px solid white;
+    cursor: pointer;
+    text-decoration: none;
+    margin-top: 10px;
+  }
+</style>
+</head>
+<body>
+  <div class="big-text">Voice Chat:</div>
+  <p>Since May 2024, the ReinServer Network supports voice chat. We highly encourage you to use this new form of communication for a more seamless ReinServer experience.</p>
+  <p>For SJI members, you will have to install the Fabric version of this mod to get rid of the "Connection reset" error on the server. We don't know why it works, but for the time being, it is the only way to play on the server.</p>
+  <br>
+  <p>How to install Simple Voice Chat</p>
+  <video width="320" height="240" controls>
+  <source src="movie.mp4" type="video/mp4">
+The video failed to load. It could be your connection, or it could be that your browser does not support video playback.
+</video>
+  <button class="button" onclick="goback()">go back</button>
+  <script>
+      if (window.location.protocol === 'http:') {
+      // Redirect to HTTPS
+      window.location.href = 'https://reinserver.com/vc';
+    }
+    function goback() {
+      window.location.href = 'https://reinserver.com';
+    }
+
+    // Fetch server status for Minecraft Java
+    fetchServerStatus('https://api.mcstatus.io/v2/status/java/play.reinserver.com', 'reinserver-network');
+    fetchServerStatus('https://api.mcstatus.io/v2/status/java/play.reinserver.com:25566', 'reinserver-smp');
+        fetchServerStatus('https://api.mcstatus.io/v2/status/java/play.reinserver.com:30066', 'reinserver-lobby');
+
+    // You can add similar fetch calls for other servers if needed
+  </script>
+</body>
+</html>
