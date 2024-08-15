@@ -53,6 +53,15 @@
   <div class="big-text">ReinServers:</div>
   <p>TIP: click on a server's name to learn more</p>
   <br>
+  <iframe 
+  src="https://reinserver.instatus.com/embed-status/add997ee/dark-sm" 
+  width="230" 
+  height="61" 
+  frameBorder="0" 
+  scrolling="no" 
+  style="border: none;"
+>
+</iframe>
   <br>
   <button class="link" onclick="rsnetwork()"><b>reinserver network (minecraft) (1.17-1.21)</b></button>
   <p id="reinserver-network">fetching server data...</p>
@@ -121,7 +130,6 @@
 
     // Fetch server status for Minecraft Java
     fetchServerStatus('https://api.mcsrvstat.us/3/play.reinserver.com', 'reinserver-network');
-
     // You can add similar fetch calls for other servers if needed
   </script>
 </body>
