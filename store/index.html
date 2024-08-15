@@ -77,76 +77,8 @@
 </head>
 <body>
   <div class="big-text">Store:</div>
-  <p><b>NOTE: this store has been deprecated. you should only be using this store if you want to pay in cash.</b></p>
-  <p>to pay online, visit our new store at store.reinserver.com</p>
-  <button class="button" onclick="goToStorePage()">view new store</button>
-  <br>
-  <br>
-  <p>here you can donate a certain amount of money to recieve perks</p>
-  <br>
-  <p>all money donated goes to funding better server hardware. <b>thank you for supporting the reinserver network.</b></p>
-  <br>
-  <div class="med-text">Ranks (1 Month):</div>
-  <div class="desktop-version">
-    <button class="purchasebutton" onclick=purchaseDonator()>Donator Rank - <b>$1/month</b></button>
-    <button class="purchasebutton" onclick=purchaseVIP()>VIP Rank - <b>$5/month</b></button>
-    <button class="purchasebutton" onclick=purchaseMVP()>MVP Rank - <b>$10/month</b></button>
-    <br>
-    <div class="med-text">Ranks (Permanent):</div>
-    <button class="purchasebutton" onclick=purchaseDonator()>Donator Rank - <b>$10</button>
-    <button class="purchasebutton" onclick=purchaseVIP()>VIP Rank - <b>$30</button>
-    <button class="purchasebutton" onclick=purchaseMVP()>MVP Rank - <b>$50</button>
-    <div class="med-text">Claim Blocks:</div>
-    <button class="purchasebutton" onclick=purchase5kcb()>5000 blocks - <b>$1</b></button>
-    <button class="purchasebutton" onclick=purchase10kcb()>10000 blocks - <b>$2</b></button>
-    <button class="purchasebutton" onclick=purchase20kcb()>20000 blocks - <b>$4</b></button>
-    <div class="med-text">Claim Blocks (Extra Value):</div>
-    <button class="purchasebutton" onclick=purchase40kcb()>40000 blocks - <b>$6</b></button>
-    <button class="purchasebutton" onclick=purchase50kcb()>50000 blocks - <b>$7</b></button>
-    <button class="purchasebutton" onclick=purchase100kcb()>100000 blocks - <b>$9</b></button>
-    <button class="purchasebutton" onclick=purchase500kcb()>500000 blocks - <b>$35</b></button>
-    <div class="med-text">In-game Currency:</div>
-    <button class="purchasebutton" onclick=purchase500()>$500 in-game currency - <b>$0.50</b></button>
-    <button class="purchasebutton" onclick=purchase1000()>$1000 in-game currency - <b>$1</b></button>
-    <button class="purchasebutton" onclick=purchase5000()>$5000 in-game currency - <b>$5</b></button>
-    <button class="purchasebutton" onclick=purchase10000()>$10000 in-game currency - <b>$10</b></button>
-  </div>
-  <div class="mobile-version">
-    <button class="purchasebutton" onclick=purchaseDonator()>Donator Rank - <b>$1/month</b></button>
-    <br>
-    <button class="purchasebutton" onclick=purchaseVIP()>VIP Rank - <b>$5/month</b></button>
-    <br>
-    <button class="purchasebutton" onclick=purchaseMVP()>MVP Rank - <b>$10/month</b></button>
-    <br>
-    <div class="med-text">Ranks (Permanent):</div>
-    <button class="purchasebutton" onclick=purchaseDonator()>Donator Rank - <b>$10</button>
-    <br>
-    <button class="purchasebutton" onclick=purchaseVIP()>VIP Rank - <b>$30</button>
-    <br>
-    <button class="purchasebutton" onclick=purchaseMVP()>MVP Rank - <b>$50</button>
-    <div class="med-text">Claim Blocks:</div>
-    <button class="purchasebutton" onclick=purchase5kcb()>5000 blocks - <b>$1</b></button>
-    <br>
-    <button class="purchasebutton" onclick=purchase10kcb()>10000 blocks - <b>$3</b></button>
-    <br>
-    <button class="purchasebutton" onclick=purchase20kcb()>20000 blocks - <b>$5</b></button>
-    <div class="med-text">Claim Blocks (Extra Value):</div>
-    <button class="purchasebutton" onclick=purchase40kcb()>40000 blocks - <b>$6</b></button>
-    <br>
-    <button class="purchasebutton" onclick=purchase50kcb()>50000 blocks - <b>$7</b></button>
-    <br>
-    <button class="purchasebutton" onclick=purchase100kcb()>100000 blocks - <b>$9</b></button>
-    <br>
-    <button class="purchasebutton" onclick=purchase500kcb()>500000 blocks - <b>$35</b></button>
-    <div class="med-text">In-game Currency:</div>
-    <button class="purchasebutton" onclick=purchase500()>$500 in-game currency - <b>$0.50</b></button>
-    <br>
-    <button class="purchasebutton" onclick=purchase1000()>$1000 in-game currency - <b>$1</b></button>
-    <br>
-    <button class="purchasebutton" onclick=purchase5000()>$5000 in-game currency - <b>$5</b></button>
-    <br>
-    <button class="purchasebutton" onclick=purchase10000()>$10000 in-game currency - <b>$10</b></button>
-  </div>
+  <p><b>NOTE: this store has been deprecated and is no longer being used.</b></p>
+  <p>visit our new store at reinserver.tebex.com</p>
   <br>
   <button class="button" onclick="goback()">go back</button>
 
@@ -211,10 +143,7 @@
       setCookie("rankWanted", "10000");
       window.location.href = 'https://reinserver.com/store/purchase';
     }
-    if (window.location.protocol === 'http:') {
-      // Redirect to HTTPS
-      window.location.href = 'https://reinserver.com/store';
-    }
+      window.location.href = 'reinserver.tebex.io';
     function setCookie(name, value) {
       var date = new Date();
       date.setTime(date.getTime() + (24 * 60 * 60 * 1000));
