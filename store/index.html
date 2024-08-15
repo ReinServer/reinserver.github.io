@@ -76,90 +76,14 @@
 </style>
 </head>
 <body>
-  <div class="big-text">Store:</div>
-  <p><b>NOTE: this store has been deprecated and is no longer being used.</b></p>
-  <p>visit our new store at reinserver.tebex.com</p>
+  <div class="big-text">Redirecting...</div>
+  <p><b>Redirecting you to the new store...</b></p>
+  <p>If redirect fails, go to reinserver.tebex.io</p>
   <br>
   <button class="button" onclick="goback()">go back</button>
 
   <script>
-    function goToStorePage() {
-      window.location.href = 'https://store.reinserver.com';
-    }
-    function goback() {
-      window.location.href = 'https://reinserver.com';
-    }
-    function purchaseDonator() {
-      window.location.href = 'https://reinserver.com/store/donator';
-    }
-    function purchaseVIP() {
-      window.location.href = 'https://reinserver.com/store/vip';
-    }
-    function purchaseMVP() {
-      window.location.href = 'https://reinserver.com/store/mvp';
-    }
-    function purchase5kcb() {
-      setCookie("rankWanted", "5kcb");
-      window.location.href = 'https://reinserver.com/store/purchase';
-    }
-      function purchase10kcb() {
-      setCookie("rankWanted", "10kcb");
-      window.location.href = 'https://reinserver.com/store/purchase';
-    }
-      function purchase20kcb() {
-      setCookie("rankWanted", "20kcb");
-      window.location.href = 'https://reinserver.com/store/purchase';
-    }
-        function purchase40kcb() {
-      setCookie("rankWanted", "40kcb");
-      window.location.href = 'https://reinserver.com/store/purchase';
-    }
-        function purchase50kcb() {
-      setCookie("rankWanted", "50kcb");
-      window.location.href = 'https://reinserver.com/store/purchase';
-    }
-        function purchase100kcb() {
-      setCookie("rankWanted", "100kcb");
-      window.location.href = 'https://reinserver.com/store/purchase';
-      }
-        function purchase500kcb() {
-      setCookie("rankWanted", "500kcb");
-      window.location.href = 'https://reinserver.com/store/purchase';
-          // idk why it broen
-    }
-      function purchase500() {
-      setCookie("rankWanted", "500");
-      window.location.href = 'https://reinserver.com/store/purchase';
-    }
-      function purchase1000() {
-      setCookie("rankWanted", "1000");
-      window.location.href = 'https://reinserver.com/store/purchase';
-    }
-      function purchase5000() {
-      setCookie("rankWanted", "5000");
-      window.location.href = 'https://reinserver.com/store/purchase';
-    }
-      function purchase10000() {
-      setCookie("rankWanted", "10000");
-      window.location.href = 'https://reinserver.com/store/purchase';
-    }
-      window.location.href = 'reinserver.tebex.io';
-    function setCookie(name, value) {
-      var date = new Date();
-      date.setTime(date.getTime() + (24 * 60 * 60 * 1000));
-      var expires = "expires=" + date.toUTCString();
-      document.cookie = name + "=" + value + ";" + expires + ";path=/";
-    }
-    window.addEventListener('resize', function() {
-    if (window.innerWidth <= 600) {
-      // Show mobile version
-      document.querySelector('.desktop-version').style.display = 'none';
-      document.querySelector('.mobile-version').style.display = 'block';
-    } else {
-      // Show desktop version
-      document.querySelector('.desktop-version').style.display = 'block';
-      document.querySelector('.mobile-version').style.display = 'none';
-    }
+      window.location.href = 'https://reinserver.tebex.io';
   });
 
   // Trigger the resize event on page load to ensure correct initial state
