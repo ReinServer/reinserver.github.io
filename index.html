@@ -60,6 +60,8 @@
   <div class="med-text">servers:</div>
   <button class="button" onclick="goToServersPage()">ReinServers</button>
   <br>
+  <button class="button" onclick="goToStatusPage()">status page</button>
+  <br>
   <button class="button" onclick="goToDowntimesPage()">upcoming downtimes</button>
   <br>
   <button class="button" onclick="goToRulesPage()">server rules</button>
@@ -80,6 +82,9 @@
   <script>
     function goToServersPage() {
       window.location.href = 'https://reinserver.com/servers';
+    }
+        function goToStatusPage() {
+      window.location.href = 'https://reinserver.instatus.com';
     }
       function goToSupportPage() {
       window.location.href = 'https://reinserver.com/support';
