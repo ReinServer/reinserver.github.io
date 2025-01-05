@@ -51,7 +51,6 @@
 </head>
 <body>
   <div class="big-text">ReinServers:</div>
-  <p>TIP: click on a server's name to learn more</p>
   <br>
   <iframe 
   src="https://reinserver.instatus.com/embed-status/add997ee/dark-sm" 
@@ -63,23 +62,23 @@
 >
 </iframe>
   <br>
-  <button class="link" onclick="rsnetwork()"><b>reinserver network (minecraft) (1.17-1.21)</b></button>
-  <p id="reinserver-network">fetching server data...</p>
+  <p><b>sji smp (1.17-1.21)</b></p>
+  <p id="sji-smp">fetching server data...</p>
   <br>
-  <p><b>IP: </b>play.reinserver.com</p>
+  <p><b>Java IP: </b>sji.reinserver.com</p>
+  <p><b>Bedrock IP: </b>play.reinserver.com</p>
   <p><b>Bedrock Port: </b>19132</p>
   <p>------------------------------------------</p>
-  <button class="link" onclick="comingsoon()"><b>unturned vanilla (escalation)</b></button>
+  <p><b>squad lifesteal (1.17-1.21)</b></p>
+  <p id="squad-ls">fetching server data...</p>
+  <br>
+  <p><b>IP: Invite only!</p>
+  <p>------------------------------------------</p>
+  <p><b>unturned barebones liferp</b></p>
   <p id="unturned"><span class="red-text"><b>server offline</b></span></p>
     <br>
   <p><b>IP: </b>play.reinserver.com</p>
   <p><b>Port: </b>27015</p>
-  <p>------------------------------------------</p>
-  <button class="link" onclick="comingsoon()"><b>gmod darkrp</b></button>
-  <p id="gmod"><span class="red-text"><b>server offline</b></span></p>
-    <br>
-  <p><b>IP: </b>play.reinserver.com</p>
-  <p><b>Port: </b>30125</p>
   <p>------------------------------------------</p>
   <button class="button" onclick="goback()">go back</button>
 </script>
@@ -91,18 +90,22 @@
     function goback() {
       window.location.href = 'https://reinserver.com';
     }
-      function rsnetwork() {
-      window.location.href = 'https://reinserver.com/servers/reinserver-network';
-    }
-      function comingsoon() {
-      alert("Coming Soon!")
-    }
     function fetchServerStatus(url, elementId) {
       fetch(url)
         .then(response => response.json())
         .then(data => {
           const element = document.getElementById(elementId);
-          if (elementId == "reinserver-network")
+          if (elementId == "sji-smp")
+          {
+            if (data.online) {
+            // Server is online
+            element.innerHTML = `<b>${data.players.online}/${data.players.max} </b>online`;
+            } else {
+            // Server is offline
+            element.innerHTML = `<b><span class="red-text">server offline</span></b>`;
+            } 
+          }
+          else if (elementId == "squad-ls")
           {
             if (data.online) {
             // Server is online
@@ -114,11 +117,11 @@
           }
         })
         .catch(error => {
-          if (elementId == "reinserver-network")
+          if (elementId == "sji-smp")
           {
             element.innerHTML = `<b><span class="red-text"><b>couldn't fetch server status</b></span></b>`;
           }
-          else if (elementId == "reinserver-smp")
+          else if (elementId == "squad-ls")
           {
              element.innerHTML = `<b><span class="red-text"><b>couldn't fetch server status</b></span></b>`;
           }
@@ -128,7 +131,9 @@
     }
 
     // Fetch server status for Minecraft Java
-    fetchServerStatus('https://api.mcsrvstat.us/3/play.reinserver.com', 'reinserver-network');
+    fetchServerStatus('https://api.mcsrvstat.us/3/sji.reinserver.com', 'sji-smp');
+    // you're smarter than i thought
+    fetchServerStatus('https://api.mcsrvstat.us/3/play.reinserver.com', 'squad-ls');
     // You can add similar fetch calls for other servers if needed
   </script>
 </body>
