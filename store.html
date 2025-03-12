@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ReinServer | Store</title>
+<link rel="icon" href="https://reinserver.com/reinserver.ico" type="image/x-icon">
+<style>
+  body {
+    font-family: Helvetica, sans-serif;
+    text-align: center;
+    background-color: black;
+    color: white;
+    line-height: 1.2;
+  }
+  .big-text {
+    font-size: 100px;
+    font-weight: bold;
+    margin-top: 50px;
+  }
+  @media (max-width: 600px) {
+    .big-text {
+      font-size: 50px; /* Reduced font size for mobile */
+    }
+    .desktop-version {
+      display: none;
+    }
+    .mobile-version {
+      display: block;
+    }
+  }
+  .med-text {
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 50px;
+  }
+  .sale-text {
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 50px;
+    color: rgb(0, 255, 0);
+  }
+  .red-text {
+    color: red;
+  }
+  .button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: black;
+    color: white;
+    border: 2px solid white;
+    cursor: pointer;
+    text-decoration: none;
+    margin-top: 10px;
+  }
+  .purchasebutton {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: black;
+    color: white;
+    border: 2px solid white;
+    cursor: pointer;
+    text-decoration: none;
+    margin-top: 10px;
+    width: 250px;
+  }
+  .text {
+    display: inline-block; /* Display text inline */
+    margin-right: 10px; /* Add margin between text and button */
+  }
+  .green-text {
+    display: inline-block; /* Display text inline */
+    margin-right: 10px; /* Add margin between text and button */
+    color: rgb(0,255,0);
+  }
+</style>
+</head>
+<body>
+  <div class="big-text">Redirecting...</div>
+  <p><b>Redirecting you to the Store...</b></p>
+  <br>
+  <button class="button" onclick="goback()">go back</button>
+
+  <script>
+      window.location.href = 'store.reinserver.com';
+
+  // Trigger the resize event on page load to ensure correct initial state
+  window.dispatchEvent(new Event('resize'));
+  </script>
+
+</body>
+</html>
