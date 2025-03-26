@@ -110,30 +110,30 @@
           {
             if (data.online) {
             // Server is online
-            element.innerHTML = `<b>${data.players.online}</b> in lobby`;
+            element.innerHTML = `lobby: <b>${data.players.online}</b> playing`;
             } else {
             // Server is offline
-            element.innerHTML = `<b><span class="red-text">lobby offline</span></b>`;
+            element.innerHTML = `<b><span class="red-text">lobby: offline</span></b>`;
             } 
           }
           else if (elementId == "rssmp")
           {
             if (data.online) {
             // Server is online
-            element.innerHTML = `<b>${data.players.online}</b> in smp`;
+            element.innerHTML = `smp: <b>${data.players.online}</b> playing`;
             } else {
             // Server is offline
-            element.innerHTML = `<b><span class="red-text">smp offline</span></b>`;
+            element.innerHTML = `<b><span class="red-text">smp: offline</span></b>`;
             } 
           }
-          else if (elementId == "rslob")
+          else if (elementId == "rslst")
           {
             if (data.online) {
             // Server is online
-            element.innerHTML = `<b>${data.players.online}</b> in lifesteal`;
+            element.innerHTML = `lifesteal:<b>${data.players.online}</b> playing`;
             } else {
             // Server is offline
-            element.innerHTML = `<b><span class="red-text">lifesteal offline</span></b>`;
+            element.innerHTML = `<b><span class="red-text">lifesteal: offline</span></b>`;
             } 
           }
         })
