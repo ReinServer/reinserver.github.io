@@ -102,6 +102,9 @@
             if (data.online) {
             // Server is online
             element.innerHTML = `<b>network: ${data.players.online}/${data.players.max} </b>online`;
+            fetchServerStatus('https://api.mcsrvstat.us/3/play.reinserver.com:30066', 'rslob');
+            fetchServerStatus('https://api.mcsrvstat.us/3/play.reinserver.com:30067', 'rssmp');
+            fetchServerStatus('https://api.mcsrvstat.us/3/play.reinserver.com:30068', 'rslst');
             } else {
             // Server is offline
               isnetworkonline = false;
@@ -160,9 +163,6 @@
     }
 
     fetchServerStatus('https://api.mcsrvstat.us/3/play.reinserver.com', 'rsnet');
-    fetchServerStatus('https://api.mcsrvstat.us/3/play.reinserver.com:30066', 'rslob');
-    fetchServerStatus('https://api.mcsrvstat.us/3/play.reinserver.com:30067', 'rssmp');
-    fetchServerStatus('https://api.mcsrvstat.us/3/play.reinserver.com:30068', 'rslst');
   </script>
 </body>
 </html>
