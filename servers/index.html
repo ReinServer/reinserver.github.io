@@ -62,8 +62,11 @@
 >
 </iframe>
   <br>
-  <p><b>reinserver new dawn (vanilla 1.17-1.21)</b></p>
-  <p id="sji-smp">fetching server data...</p>
+  <p><b>reinserver network (java/bedrock 1.17-1.21)</b></p>
+  <p id="rsnet">fetching server data...</p>
+  <p id="rslob"></p>
+  <p id="rssmp"></p>
+  <p id="rslst"></p>
   <br>
   <p><b>Java IP: </b>play.reinserver.com</p>
   <p>------------------------------------------</p>
@@ -93,7 +96,7 @@
         .then(response => response.json())
         .then(data => {
           const element = document.getElementById(elementId);
-          if (elementId == "sji-smp")
+          if (elementId == "rsnet")
           {
             if (data.online) {
             // Server is online
@@ -103,14 +106,34 @@
             element.innerHTML = `<b><span class="red-text">server offline</span></b>`;
             } 
           }
-          else if (elementId == "squad-ls")
+          else if (elementId == "rslob")
           {
             if (data.online) {
             // Server is online
-            element.innerHTML = `<b>${data.players.online}/${data.players.max} </b>online`;
+            element.innerHTML = `<b>${data.players.online}</b> in lobby`;
             } else {
             // Server is offline
-            element.innerHTML = `<b><span class="red-text">server offline</span></b>`;
+            element.innerHTML = `<b><span class="red-text">lobby offline</span></b>`;
+            } 
+          }
+          else if (elementId == "rssmp")
+          {
+            if (data.online) {
+            // Server is online
+            element.innerHTML = `<b>${data.players.online}</b> in smp`;
+            } else {
+            // Server is offline
+            element.innerHTML = `<b><span class="red-text">smp offline</span></b>`;
+            } 
+          }
+          else if (elementId == "rslob")
+          {
+            if (data.online) {
+            // Server is online
+            element.innerHTML = `<b>${data.players.online}</b> in lifesteal`;
+            } else {
+            // Server is offline
+            element.innerHTML = `<b><span class="red-text">lifesteal offline</span></b>`;
             } 
           }
         })
@@ -128,9 +151,10 @@
         });
     }
 
-    fetchServerStatus('https://api.mcsrvstat.us/3/play.reinserver.com', 'sji-smp');
-    // you're smarter than i thought
-    fetchServerStatus('https://api.mcsrvstat.us/3/thesquad.reinserver.com', 'squad-ls');
+    fetchServerStatus('https://api.mcsrvstat.us/3/play.reinserver.com', 'rsnet');
+    fetchServerStatus('https://api.mcsrvstat.us/3/play.reinserver.com:30066', 'rslob');
+    fetchServerStatus('https://api.mcsrvstat.us/3/play.reinserver.com:30067', 'rssmp');
+    fetchServerStatus('https://api.mcsrvstat.us/3/play.reinserver.com:30068', 'rslst');
   </script>
 </body>
 </html>
