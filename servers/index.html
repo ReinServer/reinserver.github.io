@@ -100,7 +100,7 @@
           {
             if (data.online) {
             // Server is online
-            element.innerHTML = `<b>${data.players.online}/${data.players.max} </b>online`;
+            element.innerHTML = `network: <b>${data.players.online}/${data.players.max} </b>online`;
             } else {
             // Server is offline
             element.innerHTML = `<b><span class="red-text">server offline</span></b>`;
@@ -110,7 +110,7 @@
           {
             if (data.online) {
             // Server is online
-            element.innerHTML = `lobby: <b>${data.players.online}</b> playing`;
+            element.innerHTML = `lobby: <b>${data.players.online}</b> online`;
             } else {
             // Server is offline
             element.innerHTML = `<b><span class="red-text">lobby: offline</span></b>`;
@@ -120,7 +120,7 @@
           {
             if (data.online) {
             // Server is online
-            element.innerHTML = `smp: <b>${data.players.online}</b> playing`;
+            element.innerHTML = `smp: <b>${data.players.online}</b> online`;
             } else {
             // Server is offline
             element.innerHTML = `<b><span class="red-text">smp: offline</span></b>`;
@@ -130,7 +130,7 @@
           {
             if (data.online) {
             // Server is online
-            element.innerHTML = `lifesteal: <b>${data.players.online}</b> playing`;
+            element.innerHTML = `lifesteal: <b>${data.players.online}</b> online`;
             } else {
             // Server is offline
             element.innerHTML = `<b><span class="red-text">lifesteal: offline</span></b>`;
