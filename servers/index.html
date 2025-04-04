@@ -83,86 +83,74 @@
   <p>------------------------------------------</p>
   <button class="button" onclick="goback()">go back</button>
 </script>
-  <script>
-    let isnetworkonline = true;
-        if (window.location.protocol === 'http:') {
-      // Redirect to HTTPS
-      window.location.href = 'https://reinserver.com/servers';
-    }
-    function goback() {
-      window.location.href = 'https://reinserver.com';
-    }
-    function fetchServerStatus(url, elementId) {
-      fetch(url)
-        .then(response => response.json())
-        .then(data => {
-          const element = document.getElementById(elementId);
-          if (elementId == "rsnet")
-          {
-            if (data.online) {
-            // Server is online
-            element.innerHTML = `<b>network: ${data.players.online}/${data.players.max} </b>online`;
-            fetchServerStatus('https://api.mcsrvstat.us/3/play.reinserver.com:30066', 'rslob');
-            fetchServerStatus('https://api.mcsrvstat.us/3/play.reinserver.com:30067', 'rssmp');
-            fetchServerStatus('https://api.mcsrvstat.us/3/play.reinserver.com:30068', 'rslst');
-            } else {
-            // Server is offline
-              isnetworkonline = false;
-            element.innerHTML = `<b><span class="red-text">network offline</span></b>`;
-            } 
-          }
-          else if (elementId == "rslob")
-          {
-            if (isnetworkonline){
-                          if (data.online) {
-            // Server is online
-            element.innerHTML = `<b>lobby: ${data.players.online}/${data.players.max}</b> online`;
-            } else {
-            // Server is offline
-            element.innerHTML = `<b><span class="red-text">lobby: offline</span></b>`;
-            } 
-            }
-          }
-          else if (elementId == "rssmp")
-          {
-                        if (isnetworkonline){
-                                      if (data.online) {
-            // Server is online
-            element.innerHTML = `<b>smp: ${data.players.online}/${data.players.max}</b> online`;
-            } else {
-            // Server is offline
-            element.innerHTML = `<b><span class="red-text">smp: offline</span></b>`;
-            } 
-            }
-          }
-          else if (elementId == "rslst")
-          {
-                        if (isnetworkonline){
-                                      if (data.online) {
-            // Server is online
-            element.innerHTML = `<b>lifesteal: ${data.players.online}/${data.players.max}</b> online`;
-            } else {
-            // Server is offline
-            element.innerHTML = `<b><span class="red-text">lifesteal: offline</span></b>`;
-            } 
-            }
-          }
-        })
-        .catch(error => {
-          if (elementId == "sji-smp")
-          {
-            element.innerHTML = `<b><span class="red-text"><b>couldn't fetch server status</b></span></b>`;
-          }
-          else if (elementId == "squad-ls")
-          {
-             element.innerHTML = `<b><span class="red-text"><b>couldn't fetch server status</b></span></b>`;
-          }
-          console.error('Error fetching server status:', error);
-          // console.error('reinard ur fucking code is shit it BROKE u retard')
-        });
+<script>
+  let isnetworkonline = true;
+
+  if (window.location.protocol === 'http:') {
+    window.location.href = 'https://reinserver.com/servers';
+  }
+
+  function goback() {
+    window.location.href = 'https://reinserver.com';
+  }
+
+  function fetchServerStatus(url) {
+    return fetch(url)
+      .then(response => response.json())
+      .catch(error => {
+        console.error('Error fetching server status:', error);
+        return null; // Return null on error
+      });
+  }
+
+  async function loadStatuses() {
+    const rsnetElement = document.getElementById("rsnet");
+    const rslobElement = document.getElementById("rslob");
+    const rssmpElement = document.getElementById("rssmp");
+    const rslstElement = document.getElementById("rslst");
+    
+    const networkData = await fetchServerStatus('https://api.mcsrvstat.us/3/play.reinserver.com');
+
+    if (!networkData || !networkData.online) {
+      isnetworkonline = false;
+      rsnetElement.innerHTML = `<b><span class="red-text">network offline</span></b>`;
+      rslobElement.innerHTML = rssmpElement.innerHTML = rslstElement.innerHTML = '';
+      return;
     }
 
-    fetchServerStatus('https://api.mcsrvstat.us/3/play.reinserver.com', 'rsnet');
-  </script>
+
+    rsnetElement.innerHTML = `<b>network: ${networkData.players.online}/${networkData.players.max}</b> online<br><span>...</span>`;
+    
+    const [lobbyData, smpData, lstData] = await Promise.all([
+      fetchServerStatus('https://api.mcsrvstat.us/3/play.reinserver.com:30066'),
+      fetchServerStatus('https://api.mcsrvstat.us/3/play.reinserver.com:30067'),
+      fetchServerStatus('https://api.mcsrvstat.us/3/play.reinserver.com:30068')
+    ]);
+
+    // Update lobby
+    if (lobbyData && lobbyData.online) {
+      rslobElement.innerHTML = `<b>lobby: ${lobbyData.players.online}/${lobbyData.players.max}</b> online`;
+    } else {
+      rslobElement.innerHTML = `<b><span class="red-text">lobby: offline</span></b>`;
+    }
+
+    // Update smp
+    if (smpData && smpData.online) {
+      rssmpElement.innerHTML = `<b>smp: ${smpData.players.online}/${smpData.players.max}</b> online`;
+    } else {
+      rssmpElement.innerHTML = `<b><span class="red-text">smp: offline</span></b>`;
+    }
+
+    // Update lifesteal
+    if (lstData && lstData.online) {
+      rslstElement.innerHTML = `<b>lifesteal: ${lstData.players.online}/${lstData.players.max}</b> online`;
+    } else {
+      rslstElement.innerHTML = `<b><span class="red-text">lifesteal: offline</span></b>`;
+    }
+  }
+
+  loadStatuses();
+</script>
+
 </body>
 </html>
