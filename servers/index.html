@@ -99,7 +99,7 @@
       .then(response => response.json())
       .catch(error => {
         console.error('Error fetching server status:', error);
-        return null; // Return null on error
+        return null;
       });
   }
 
@@ -108,24 +108,27 @@
     const rslobElement = document.getElementById("rslob");
     const rssmpElement = document.getElementById("rssmp");
     const rslstElement = document.getElementById("rslst");
-    
+
+    rslobElement.innerHTML = rssmpElement.innerHTML = rslstElement.innerHTML = ``;
+
     const networkData = await fetchServerStatus('https://api.mcsrvstat.us/3/play.reinserver.com');
 
     if (!networkData || !networkData.online) {
       isnetworkonline = false;
       rsnetElement.innerHTML = `<b><span class="red-text">network offline</span></b>`;
-      rslobElement.innerHTML = rssmpElement.innerHTML = rslstElement.innerHTML = '';
       return;
     }
 
+    rsnetElement.innerHTML = `<b>network: ${networkData.players.online}/${networkData.players.max}</b> online<br><span id="loading-dots">...</span>`;
 
-    rsnetElement.innerHTML = `<b>network: ${networkData.players.online}/${networkData.players.max}</b> online<br><span>...</span>`;
-    
     const [lobbyData, smpData, lstData] = await Promise.all([
       fetchServerStatus('https://api.mcsrvstat.us/3/play.reinserver.com:30066'),
       fetchServerStatus('https://api.mcsrvstat.us/3/play.reinserver.com:30067'),
       fetchServerStatus('https://api.mcsrvstat.us/3/play.reinserver.com:30068')
     ]);
+
+    const loadingDots = document.getElementById("loading-dots");
+    if (loadingDots) loadingDots.remove();
 
     // Update lobby
     if (lobbyData && lobbyData.online) {
