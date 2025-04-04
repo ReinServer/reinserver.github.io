@@ -119,7 +119,7 @@
       return;
     }
 
-    rsnetElement.innerHTML = `<b>network: ${networkData.players.online}/${networkData.players.max}</b> online<br><span id="loading-dots">(fetching subservers...)</span>`;
+    rsnetElement.innerHTML = `<b>network: ${networkData.players.online}/${networkData.players.max}</b> online<br><br><span id="loading-dots">...</span>`;
 
     const [lobbyData, smpData, lstData] = await Promise.all([
       fetchServerStatus('https://api.mcsrvstat.us/3/play.reinserver.com:30066'),
@@ -128,7 +128,7 @@
     ]);
 
     const loadingDots = document.getElementById("loading-dots");
-    if (loadingDots) loadingDots.innerText - `---------------`;
+    if (loadingDots) loadingDots.innerHTML =  `---------------`;
 
     // Update lobby
     if (lobbyData && lobbyData.online) {
