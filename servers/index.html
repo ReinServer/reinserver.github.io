@@ -68,7 +68,7 @@
 </iframe>
   <br>
   <p><b>reinserver network (java/bedrock 1.17-1.21)</b></p>
-  <p id="rsnet">fetching server data...</p>
+  <p id="rsnet"style="margin-bottom: 0; padding-bottom: 0">>fetching server data...</p>
   <p id="rslob"></p>
   <p id="rssmp"></p>
   <p id="rslst"></p>
@@ -137,7 +137,7 @@
 
     // Update lobby
     if (lobbyData && lobbyData.online) {
-      rslobElement.innerHTML = `<b>lobby: ${lobbyData.players.online}/${lobbyData.players.max}</b> online`;
+      rslobElement.innerHTML = `<b style="margin-top: 0; padding-top: 0">lobby: ${lobbyData.players.online}/${lobbyData.players.max}</b> online`;
     } else {
       rslobElement.innerHTML = `<b><span class="red-text">lobby: offline</span></b>`;
     }
