@@ -53,9 +53,9 @@
   <br>
   <p>hi, i'm rein.</p>
   <br>
-  <p>i host dedicated servers for my friends to play on.</p>
+  <p>and i host dedicated servers in my bedroom.</p>
   <br>
-  <p>back in 2024, i operated the ReinServer Network. now, i operate smaller servers with their own small communities.</p>
+  <p>my biggest server right now is the ReinServer Network, feel free to join</p>
   <br>
   <p>want a server? join our discord and contact us</p>
   <br>
@@ -74,6 +74,20 @@
   <br>
   <br>
   <script>
+    fetch('https://reinserver.instatus.com/summary.json')
+    .then(response => response.json())
+    .then(data => {
+      const status = data.status;
+      if (status === 'hasissues' || status === 'undermaintenance') {
+        const statusButton = document.querySelector('button[onclick="goToStatusPage()"]');
+        if (statusButton) {
+          statusButton.innerHTML = '<span style="color: red;">(!)</span> status page';
+        }
+      }
+    })
+    .catch(error => {
+      console.error('Failed to fetch status info:', error);
+    });
     function goToServersPage() {
       window.location.href = 'https://reinserver.com/servers';
     }
@@ -89,8 +103,9 @@
       function joinDiscord() {
       window.location.href = 'https://discord.gg/pSZrne8szT';
     }
-    console.log("how 2 make money");
-    console.log("step 1: reinserver");
+    console.log("reinserver:");
+    console.log("empowering singaporean students");
+    console.log("to ignore their teachers and play minecraft in class");
     console.log("[rs]");
     if (window.location.protocol === 'http:') {
       // Redirect to HTTPS
