@@ -75,12 +75,15 @@
   <br>
   <script>
     fetch('https://reinserver.instatus.com/summary.json')
+          console.log("FETCH");
     .then(response => response.json())
     .then(data => {
       const status = data.status;
       if (status === 'HASISSUES' || status === 'UNDERMAINTENANCE') {
+            console.log("ISSUE DETECTED");
         const statusButton = document.querySelector('button[onclick="goToStatusPage()"]');
         if (statusButton) {
+              console.log("STATUS BUTTON UPDATE");
           statusButton.innerHTML = '<span style="color: red;">(!)</span> status page';
         }
       }
