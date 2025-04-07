@@ -80,7 +80,7 @@
       .then(response => response.json())
       .then(data => {
         const status = data.status;
-        if (status === 'HASISSUES' || status === 'UNDERMAINTENANCE') {
+        if (status === 'hasissues' || status === 'undermaintenance') {
           const statusButton = document.getElementById('statusButton');
           if (statusButton) {
             statusButton.innerHTML = '<span style="color: red;">(!)</span> status page';
@@ -90,7 +90,11 @@
       .catch(error => {
         console.error('Failed to fetch status info:', error);
       });
-  }
+
+    if (window.location.protocol === 'http:') {
+      window.location.href = 'https://reinserver.com';
+    }
+  });
     function goToServersPage() {
       window.location.href = 'https://reinserver.com/servers';
     }
@@ -110,10 +114,6 @@
     console.log("empowering singaporean students");
     console.log("to ignore their teachers and play minecraft in class");
     console.log("[rs]");
-    if (window.location.protocol === 'http:') {
-      // Redirect to HTTPS
-      window.location.href = 'https://reinserver.com';
-    }
   </script>
 
 </body>
