@@ -80,7 +80,7 @@
       .then(response => response.json())
       .then(data => {
         const status = data.status;
-        if (status === 'hasissues' || status === 'undermaintenance') {
+        if (status === 'HASISSUES' || status === 'UNDERMAINTENANCE') {
           const statusButton = document.getElementById('statusButton');
           if (statusButton) {
             statusButton.innerHTML = '<span style="color: red;">(!)</span> status page';
