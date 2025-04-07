@@ -61,7 +61,7 @@
   <br>
   <button class="button" onclick="goToServersPage()">ReinServers</button>
   <br>
-  <button class="button" onclick="goToStatusPage()">status page</button>
+  <button id="statusButton" class="button" onclick="goToStatusPage()">status page</button>
   <br>
   <button class="button" onclick="goToDownloadsPage()">world downloads</button>
   <br>
@@ -74,20 +74,22 @@
   <br>
   <br>
   <script>
-fetch('https://reinserver.instatus.com/summary.json')
-    .then(response => response.json())
-    .then(data => {
-      const status = data.status;
-      if (status === 'hasissues' || status === 'undermaintenance') {
-        const statusButton = document.querySelector('button[onclick="goToStatusPage()"]');
-        if (statusButton) {
-          statusButton.innerHTML = '<span style="color: red;">(!)</span> status page';
+// Wait until DOM is loaded
+  document.addEventListener("DOMContentLoaded", function () {
+    fetch('https://reinserver.instatus.com/summary.json')
+      .then(response => response.json())
+      .then(data => {
+        const status = data.status;
+        if (status === 'HASISSUES' || status === 'UNDERMAINTENANCE') {
+          const statusButton = document.getElementById('statusButton');
+          if (statusButton) {
+            statusButton.innerHTML = '<span style="color: red;">(!)</span> status page';
+          }
         }
-      }
-    })
-    .catch(error => {
-      console.error('Failed to fetch status info:', error);
-    });
+      })
+      .catch(error => {
+        console.error('Failed to fetch status info:', error);
+      });
     function goToServersPage() {
       window.location.href = 'https://reinserver.com/servers';
     }
