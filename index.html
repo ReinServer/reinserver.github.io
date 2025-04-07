@@ -76,7 +76,6 @@
   <script>
     fetch('https://reinserver.instatus.com/summary.json')
           console.log("FETCH");
-    .then(response => response.json())
     .then(data => {
       const status = data.status;
       if (status === 'HASISSUES' || status === 'UNDERMAINTENANCE') {
