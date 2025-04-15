@@ -124,7 +124,7 @@
       return;
     }
 
-    rsnetElement.innerHTML = `<b>network: ${networkData.players.online}/${networkData.players.max}</b> online<span id="loading-dots"><br><br>...</span>`;
+    rsnetElement.innerHTML = `<b>network: ${networkData.players.online}</b> online<span id="loading-dots"><br><br>...</span>`;
 
     const [lobbyData, smpData, lstData] = await Promise.all([
       fetchServerStatus('https://api.mcsrvstat.us/3/play.reinserver.com:30066'),
