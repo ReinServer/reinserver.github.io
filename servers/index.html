@@ -72,6 +72,7 @@
   <p id="rslob"></p>
   <p id="rssmp"></p>
   <p id="rslst"></p>
+  <p id="rseth"></p>
   <br>
   <p><b>Java IP: </b>play.reinserver.com</p>
   <p>------------------------------------------</p>
@@ -113,6 +114,7 @@
     const rslobElement = document.getElementById("rslob");
     const rssmpElement = document.getElementById("rssmp");
     const rslstElement = document.getElementById("rslst");
+    const rsethElement = document.getElementById("rseth");
 
     rslobElement.innerHTML = rssmpElement.innerHTML = rslstElement.innerHTML = ``;
 
@@ -126,10 +128,11 @@
 
     rsnetElement.innerHTML = `<b>network: ${networkData.players.online}</b> online<span id="loading-dots"><br><br>...</span>`;
 
-    const [lobbyData, smpData, lstData] = await Promise.all([
+    const [lobbyData, smpData, lstData, ethData] = await Promise.all([
       fetchServerStatus('https://api.mcsrvstat.us/3/play.reinserver.com:30066'),
       fetchServerStatus('https://api.mcsrvstat.us/3/play.reinserver.com:30067'),
-      fetchServerStatus('https://api.mcsrvstat.us/3/play.reinserver.com:30068')
+      fetchServerStatus('https://api.mcsrvstat.us/3/play.reinserver.com:30068'),
+      fetchServerStatus('https://api.mcsrvstat.us/3/play.reinserver.com:30069')
     ]);
 
     const loadingDots = document.getElementById("loading-dots");
@@ -154,6 +157,12 @@
       rslstElement.innerHTML = `<b>lifesteal: ${lstData.players.online}/${lstData.players.max}</b> online`;
     } else {
       rslstElement.innerHTML = `<b><span class="red-text">lifesteal: offline</span></b>`;
+    }
+  }
+      if (ethData && ethData.online) {
+      rsethElement.innerHTML = `<b>earth: ${lstData.players.online}/${lstData.players.max}</b> online`;
+    } else {
+      rsethElement.innerHTML = `<b><span class="red-text">earth: offline</span></b>`;
     }
   }
 
