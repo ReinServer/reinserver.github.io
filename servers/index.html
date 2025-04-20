@@ -159,8 +159,8 @@
       rslstElement.innerHTML = `<b><span class="red-text">lifesteal: offline</span></b>`;
     }
   
-      if (ethData && ethData.online) {
-      rsethElement.innerHTML = `<b>earth: ${lstData.players.online}/${lstData.players.max}</b> online`;
+    if (ethData && ethData.online) {
+      rsethElement.innerHTML = `<b>earth: ${ethData.players.online}/${ethData.players.max}</b> online`;
     } else {
       rsethElement.innerHTML = `<b><span class="red-text">earth: offline</span></b>`;
     }
