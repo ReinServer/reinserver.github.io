@@ -109,62 +109,65 @@
       });
   }
 
-  async function loadStatuses() {
-    const rsnetElement = document.getElementById("rsnet");
-    const rslobElement = document.getElementById("rslob");
-    const rssmpElement = document.getElementById("rssmp");
-    const rslstElement = document.getElementById("rslst");
-    const rsethElement = document.getElementById("rseth");
+async function loadStatuses() {
+  const rsnetElement = document.getElementById("rsnet");
+  const rslobElement = document.getElementById("rslob");
+  const rssmpElement = document.getElementById("rssmp");
+  const rslstElement = document.getElementById("rslst");
+  const rsethElement = document.getElementById("rseth");
 
-    rslobElement.innerHTML = rssmpElement.innerHTML = rslstElement.innerHTML = ``;
+  rslobElement.innerHTML = rssmpElement.innerHTML = rslstElement.innerHTML = ``;
 
-    const networkData = await fetchServerStatus('https://api.mcsrvstat.us/3/play.reinserver.com');
+  const networkData = await fetchServerStatus('https://api.mcsrvstat.us/3/play.reinserver.com');
 
-    if (!networkData || !networkData.online) {
-      isnetworkonline = false;
-      rsnetElement.innerHTML = `<b><span class="red-text">network offline</span></b>`;
-      return;
-    }
-
-    rsnetElement.innerHTML = `<b>network: ${networkData.players.online}</b> online<span id="loading-dots"><br><br>...</span>`;
-
-    const [lobbyData, smpData, lstData, ethData] = await Promise.all([
-      fetchServerStatus('https://api.mcsrvstat.us/3/play.reinserver.com:30066'),
-      fetchServerStatus('https://api.mcsrvstat.us/3/play.reinserver.com:30067'),
-      fetchServerStatus('https://api.mcsrvstat.us/3/play.reinserver.com:30068'),
-      fetchServerStatus('https://api.mcsrvstat.us/3/play.reinserver.com:30069')
-    ]);
-
-    const loadingDots = document.getElementById("loading-dots");
-    if (loadingDots) loadingDots.innerHTML =  `<br>---------------`;
-
-    // Update lobby
-    if (lobbyData && lobbyData.online) {
-      rslobElement.innerHTML = `<b style="margin-top: 0; padding-top: 0">lobby: ${lobbyData.players.online}/${lobbyData.players.max}</b> online`;
-    } else {
-      rslobElement.innerHTML = `<b><span class="red-text">lobby: offline</span></b>`;
-    }
-
-    // Update smp
-    if (smpData && smpData.online) {
-      rssmpElement.innerHTML = `<b>smp: ${smpData.players.online}/${smpData.players.max}</b> online`;
-    } else {
-      rssmpElement.innerHTML = `<b><span class="red-text">smp: offline</span></b>`;
-    }
-
-    // Update lifesteal
-    if (lstData && lstData.online) {
-      rslstElement.innerHTML = `<b>lifesteal: ${lstData.players.online}/${lstData.players.max}</b> online`;
-    } else {
-      rslstElement.innerHTML = `<b><span class="red-text">lifesteal: offline</span></b>`;
-    }
-  
-    if (ethData && ethData.online) {
-      rsethElement.innerHTML = `<b>conquest: ${ethData.players.online}/${ethData.players.max}</b> online`;
-    } else {
-      rsethElement.innerHTML = `<b><span class="red-text">conquest: offline</span></b>`;
-    }
+  if (!networkData || !networkData.online) {
+    isnetworkonline = false;
+    rsnetElement.innerHTML = `<b><span class="red-text">network offline</span></b>`;
+    return;
   }
+
+  const totalPlayers = networkData.players.online ?? 0;
+  rsnetElement.innerHTML = `<b>network: ${totalPlayers}</b> online<span id="loading-dots"><br><br>...</span>`;
+
+  const [lobbyData, smpData, lstData] = await Promise.all([
+    fetchServerStatus('https://api.mcsrvstat.us/3/play.reinserver.com:30066'),
+    fetchServerStatus('https://api.mcsrvstat.us/3/play.reinserver.com:30067'),
+    fetchServerStatus('https://api.mcsrvstat.us/3/play.reinserver.com:30068')
+  ]);
+
+  const loadingDots = document.getElementById("loading-dots");
+  if (loadingDots) loadingDots.innerHTML = `<br>---------------`;
+
+  let lobbyPlayers = 0;
+  let smpPlayers = 0;
+  let lstPlayers = 0;
+
+  if (lobbyData && lobbyData.online) {
+    lobbyPlayers = lobbyData.players.online ?? 0;
+    rslobElement.innerHTML = `<b style="margin-top: 0; padding-top: 0">lobby: ${lobbyPlayers}/${lobbyData.players.max}</b> online`;
+  } else {
+    rslobElement.innerHTML = `<b><span class="red-text">lobby: offline</span></b>`;
+  }
+
+  if (smpData && smpData.online) {
+    smpPlayers = smpData.players.online ?? 0;
+    rssmpElement.innerHTML = `<b>smp: ${smpPlayers}/${smpData.players.max}</b> online`;
+  } else {
+    rssmpElement.innerHTML = `<b><span class="red-text">smp: offline</span></b>`;
+  }
+
+  if (lstData && lstData.online) {
+    lstPlayers = lstData.players.online ?? 0;
+    rslstElement.innerHTML = `<b>lifesteal: ${lstPlayers}/${lstData.players.max}</b> online`;
+  } else {
+    rslstElement.innerHTML = `<b><span class="red-text">lifesteal: offline</span></b>`;
+  }
+
+  // MINIGAMES player count calculation
+  const minigamesPlayers = Math.max(0, totalPlayers - (lobbyPlayers + smpPlayers + lstPlayers));
+  rsethElement.innerHTML = `<b>minigames: ${minigamesPlayers}</b>/100 online`;
+}
+
 
   loadStatuses();
 </script>
