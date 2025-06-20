@@ -129,10 +129,11 @@ async function loadStatuses() {
   const totalPlayers = networkData.players.online ?? 0;
   rsnetElement.innerHTML = `<b>network: ${totalPlayers}</b> online<span id="loading-dots"><br><br>...</span>`;
 
-  const [lobbyData, smpData, lstData] = await Promise.all([
+  const [lobbyData, smpData, lstData, minigamesData] = await Promise.all([
     fetchServerStatus('https://api.mcsrvstat.us/3/play.reinserver.com:30066'),
     fetchServerStatus('https://api.mcsrvstat.us/3/play.reinserver.com:30067'),
-    fetchServerStatus('https://api.mcsrvstat.us/3/play.reinserver.com:30068')
+    fetchServerStatus('https://api.mcsrvstat.us/3/play.reinserver.com:30068'),
+    fetchServerStatus('https://api.mcsrvstat.us/3/play.reinserver.com:31001')
   ]);
 
   const loadingDots = document.getElementById("loading-dots");
@@ -163,9 +164,13 @@ async function loadStatuses() {
     rslstElement.innerHTML = `<b><span class="red-text">lifesteal: offline</span></b>`;
   }
 
-  // MINIGAMES player count calculation
-  const minigamesPlayers = Math.max(0, totalPlayers - (lobbyPlayers + smpPlayers + lstPlayers));
-  rsethElement.innerHTML = `<b>minigames: ${minigamesPlayers}/100</b> online`;
+  // Minigames check
+  if (minigamesData && minigamesData.online) {
+    const minigamesPlayers = Math.max(0, totalPlayers - (lobbyPlayers + smpPlayers + lstPlayers));
+    rsethElement.innerHTML = `<b>minigames: ${minigamesPlayers}/100</b> online`;
+  } else {
+    rsethElement.innerHTML = `<b><span class="red-text">minigames: offline</span></b>`;
+  }
 }
 
 
