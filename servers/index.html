@@ -72,6 +72,7 @@
   <p id="rslob"></p>
   <p id="rssmp"></p>
   <p id="rslst"></p>
+  <p id="rswrf"></p>
   <p id="rseth"></p>
   <br>
   <p><b>Java IP: </b>play.reinserver.com</p>
@@ -114,7 +115,8 @@ async function loadStatuses() {
   const rslobElement = document.getElementById("rslob");
   const rssmpElement = document.getElementById("rssmp");
   const rslstElement = document.getElementById("rslst");
-  const rsethElement = document.getElementById("rseth");
+  const rswrfElement = document.getElementById("rswrf");
+  const rsethElement = document.getElementById("rsmng");
 
   rslobElement.innerHTML = rssmpElement.innerHTML = rslstElement.innerHTML = ``;
 
@@ -129,10 +131,11 @@ async function loadStatuses() {
   const totalPlayers = networkData.players.online ?? 0;
   rsnetElement.innerHTML = `<b>network: ${totalPlayers}</b> online<span id="loading-dots"><br><br>...</span>`;
 
-  const [lobbyData, smpData, lstData, minigamesData] = await Promise.all([
+  const [lobbyData, smpData, lstData, wrfDta, minigamesData] = await Promise.all([
     fetchServerStatus('https://api.mcsrvstat.us/3/play.reinserver.com:30066'),
     fetchServerStatus('https://api.mcsrvstat.us/3/play.reinserver.com:30067'),
     fetchServerStatus('https://api.mcsrvstat.us/3/play.reinserver.com:30068'),
+    fetchServerStatus('https://api.mcsrvstat.us/3/play.reinserver.com:31009'),
     fetchServerStatus('https://api.mcsrvstat.us/3/play.reinserver.com:31001')
   ]);
 
@@ -142,6 +145,7 @@ async function loadStatuses() {
   let lobbyPlayers = 0;
   let smpPlayers = 0;
   let lstPlayers = 0;
+  let wrfPlayers = 0;
 
   if (lobbyData && lobbyData.online) {
     lobbyPlayers = lobbyData.players.online ?? 0;
@@ -163,10 +167,16 @@ async function loadStatuses() {
   } else {
     rslstElement.innerHTML = `<b><span class="red-text">lifesteal: offline</span></b>`;
   }
+  if (wrfData && wrfData.online) {
+    wrfPlayers = wrfData.players.online ?? 0;
+    rswrfElement.innerHTML = `<b>warfare: ${wrfPlayers}/${wrfData.players.max}</b> online`;
+  } else {
+    rswrfElement.innerHTML = `<b><span class="red-text">warfare: offline</span></b>`;
+  }
 
   // Minigames check
   if (minigamesData && minigamesData.online) {
-    const minigamesPlayers = Math.max(0, totalPlayers - (lobbyPlayers + smpPlayers + lstPlayers));
+    const minigamesPlayers = Math.max(0, totalPlayers - (lobbyPlayers + smpPlayers + lstPlayers + wrfPlayers));
     rsethElement.innerHTML = `<b>minigames: ${minigamesPlayers}/100</b> online`;
   } else {
     rsethElement.innerHTML = `<b><span class="red-text">minigames: offline</span></b>`;
