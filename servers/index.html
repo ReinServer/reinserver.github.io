@@ -118,7 +118,7 @@ async function loadStatuses() {
   const rswrfElement = document.getElementById("rswrf");
   const rsethElement = document.getElementById("rsmng");
 
-  rslobElement.innerHTML = rssmpElement.innerHTML = rslstElement.innerHTML = ``;
+  rslobElement.innerHTML = rssmpElement.innerHTML = rslstElement.innerHTML = rswrfElement.innerHTML = ``;
 
   const networkData = await fetchServerStatus('https://api.mcsrvstat.us/3/play.reinserver.com');
 
@@ -131,7 +131,7 @@ async function loadStatuses() {
   const totalPlayers = networkData.players.online ?? 0;
   rsnetElement.innerHTML = `<b>network: ${totalPlayers}</b> online<span id="loading-dots"><br><br>...</span>`;
 
-  const [lobbyData, smpData, lstData, wrfDta, minigamesData] = await Promise.all([
+  const [lobbyData, smpData, lstData, wrfData, minigamesData] = await Promise.all([
     fetchServerStatus('https://api.mcsrvstat.us/3/play.reinserver.com:30066'),
     fetchServerStatus('https://api.mcsrvstat.us/3/play.reinserver.com:30067'),
     fetchServerStatus('https://api.mcsrvstat.us/3/play.reinserver.com:30068'),
