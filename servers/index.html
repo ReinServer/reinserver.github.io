@@ -116,7 +116,7 @@ async function loadStatuses() {
   const rssmpElement = document.getElementById("rssmp");
   const rslstElement = document.getElementById("rslst");
   const rswrfElement = document.getElementById("rswrf");
-  const rsethElement = document.getElementById("rsmng");
+  const rsmngElement = document.getElementById("rsmng");
 
   rslobElement.innerHTML = rssmpElement.innerHTML = rslstElement.innerHTML = rswrfElement.innerHTML = ``;
 
@@ -135,7 +135,7 @@ async function loadStatuses() {
     fetchServerStatus('https://api.mcsrvstat.us/3/play.reinserver.com:30066'),
     fetchServerStatus('https://api.mcsrvstat.us/3/play.reinserver.com:30067'),
     fetchServerStatus('https://api.mcsrvstat.us/3/play.reinserver.com:30068'),
-    fetchServerStatus('https://api.mcsrvstat.us/3/play.reinserver.com:31009'),
+    fetchServerStatus('https://api.mcsrvstat.us/3/play.reinserver.com:30069'),
     fetchServerStatus('https://api.mcsrvstat.us/3/play.reinserver.com:31001')
   ]);
 
@@ -177,9 +177,9 @@ async function loadStatuses() {
   // Minigames check
   if (minigamesData && minigamesData.online) {
     const minigamesPlayers = Math.max(0, totalPlayers - (lobbyPlayers + smpPlayers + lstPlayers + wrfPlayers));
-    rsethElement.innerHTML = `<b>minigames: ${minigamesPlayers}/100</b> online`;
+    rsmngElement.innerHTML = `<b>minigames: ${minigamesPlayers}/100</b> online`;
   } else {
-    rsethElement.innerHTML = `<b><span class="red-text">minigames: offline</span></b>`;
+    rsmngElement.innerHTML = `<b><span class="red-text">minigames: offline</span></b>`;
   }
 }
 
