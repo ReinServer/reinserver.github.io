@@ -76,22 +76,26 @@
   <br>
   <br>
   <script>
-// Wait until DOM is loaded
-  document.addEventListener("DOMContentLoaded", function () {
-    fetch('https://reinserver.instatus.com/summary.json')
-      .then(response => response.json())
-      .then(data => {
-        const status = data.status;
-        if (status === 'HASISSUES' || status === 'UNDERMAINTENANCE') {
-          const statusButton = document.getElementById('statusButton');
-          if (statusButton) {
-            statusButton.innerHTML = '<span style="color: red;">(!)</span> status page';
-          }
+document.addEventListener("DOMContentLoaded", function () {
+  fetch('https://reinserver.instatus.com/summary.json')
+    .then(response => response.json())
+    .then(data => {
+      const pageStatus = data.page.status;
+      const incidents = data.activeIncidents || [];
+
+      if (pageStatus === 'HASISSUES' || 
+          pageStatus === 'UNDERMAINTENANCE' || 
+          incidents.length > 0) {
+
+        const statusButton = document.getElementById('statusButton');
+        if (statusButton) {
+          statusButton.innerHTML = '<span style="color: red;">(!)</span> status page';
         }
-      })
-      .catch(error => {
-        console.error('Failed to fetch status info:', error);
-      });
+      }
+    })
+    .catch(error => {
+      console.error('Failed to fetch status info:', error);
+    });
 
     if (window.location.protocol === 'http:') {
       window.location.href = 'https://reinserver.com';
