@@ -1,1 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ReinServer | Goodbye</title>
+<link rel="icon" href="https://reinserver.com/reinserver.ico" type="image/x-icon">
+<style>
+  body {
+    font-family: Helvetica, sans-serif;
+    text-align: center;
+    background-color: black;
+    color: white;
+    line-height: 1.5;
+    padding: 40px 20px 60px;
+    margin: 0;
+  }
 
+  .container {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .big-text {
+    font-size: 72px;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .med-text {
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 30px;
+  }
+
+  h2 {
+    font-size: 42px;
+    margin-top: 60px;
+    margin-bottom: 20px;
+  }
+
+  p {
+    max-width: 850px;
+    margin: 0 auto 24px;
+    font-size: 20px;
+    line-height: 1.7;
+  }
+
+  a {
+    color: white;
+  }
+
+  .image-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    max-width: 1100px;
+    margin: 50px auto 0;
+  }
+
+  .image-grid img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border: 2px solid white;
+    display: block;
+  }
+
+  @media (max-width: 700px) {
+    body {
+      padding: 30px 16px 40px;
+    }
+
+    .big-text {
+      font-size: 48px;
+    }
+
+    .med-text {
+      font-size: 24px;
+    }
+
+    h2 {
+      font-size: 32px;
+    }
+
+    p {
+      font-size: 18px;
+    }
+
+    .image-grid {
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin-top: 40px;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="big-text">Thank you</div>
+    <div class="med-text">ReinServer has officially been sunsetted. All server-related data has been archived and the webstore has been shut down.</div>
+
+    <p>I'd like to thank our hardworking and sacrificial @staff team, and @veterans who spent blood, sweat, tears and their valuable time helping and benefitting the server and its playerbase. (and our @developer, who spent tireless time troubleshooting our backend servers. sorry for fucking up the server every now and then LOL)</p>
+
+    <p>I'd also like to thank our supporters, those who bought @player+, @vip, @mvp, @mvp+ and @legend, alongside those who donated to the server. ReinServer would not exist without you.</p>
+
+    <p>Lastly, I'd like to thank every single person who played ReinServer at least once. You all bumping the player count up honestly put a warm feeling in my heart, and I had a blast interacting and playing with y'all.</p>
+
+    <h2>What's next?</h2>
+    <p>I'm switching course to game development (wishlist <a href="https://store.steampowered.com/app/3835000/Flood_Descendance/">Flood Descendance on Steam</a>) and other endeavours. The server power will be used for other personal projects I have planned.</p>
+
+    <p>Thanks for 3 years of ReinServer.</p>
+
+    <div class="image-grid">
+      <img src="/images/1.png" alt="ReinServer memory 1">
+      <img src="/images/2.png" alt="ReinServer memory 2">
+      <img src="/images/3.png" alt="ReinServer memory 3">
+      <img src="/images/4.png" alt="ReinServer memory 4">
+    </div>
+  </div>
+
+  <script>
+    if (window.location.protocol === 'http:') {
+      window.location.href = 'https://reinserver.com/goodbye.html';
+    }
+  </script>
+</body>
+</html>
