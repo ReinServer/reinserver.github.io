@@ -12,19 +12,23 @@
     background-color: black;
     color: white;
     line-height: 1.2;
+    padding: 40px 20px;
   }
-  .big-text {
-    font-size: 100px;
-    font-weight: bold;
+  h2 {
+    font-size: 42px;
     margin-top: 50px;
+    margin-bottom: 20px;
   }
-  @media (max-width: 600px) {
-    .big-text {
-      font-size: 50px; /* Reduced font size for mobile */
-    }
+  p {
+    max-width: 800px;
+    margin: 0 auto 20px;
+    font-size: 20px;
+    line-height: 1.5;
   }
-  .red-text {
-    color: red;
+  a {
+    color: white;
+    text-decoration: underline;
+    font-size: 18px;
   }
   .button {
     display: inline-block;
@@ -34,48 +38,26 @@
     border: 2px solid white;
     cursor: pointer;
     text-decoration: none;
-    margin-top: 10px;
+    margin-top: 30px;
   }
-  button.link
-  { 
-    background:none; 
-    border:none; 
-    color: white;
-    font-family: Helvetica, sans-serif;
-    text-align: center;
-    color: white;
-    line-height: 1.2;
-    font-size: 15px;
-  }
-  #rslob {
-  margin-top: 0;
-  padding-top: 0;
-}
+  @media (max-width: 600px) {
+    h2 {
+      font-size: 28px;
+    }
 
+    p {
+      font-size: 18px;
+    }
+  }
 </style>
 </head>
 <body>
-  <div class="big-text">ReinServers:</div>
-  <br>
-  <iframe 
-  src="https://reinserver.instatus.com/embed-status/add997ee/dark-sm" 
-  width="320" 
-  height="61" 
-  frameBorder="0" 
-  scrolling="no" 
-  style="border: none;"
->
-</iframe>
-  <br>
-  <p><b>reinserver network</b></p>
-  <p id="rsnet"style="margin-bottom: 0; padding-bottom: 0">we're working on it...</p>
-  <br>
-  <p><b>IP: </b>play.reinserver.com</p>
+  <h2>Thank you for supporting ReinServer</h2>
+  <p>Since 13 April 2026, ReinServer has officially been sunsetted. All server-related data has been archived and the webstore has been shut down.<br>Thank you for 3 years of ReinServer.</p>
+  <p><a href="goodbye.html">read shutdown notice</a></p>
   <button class="button" onclick="goback()">go back</button>
-</script>
-<script>
-  let isnetworkonline = true;
 
+<script>
   if (window.location.protocol === 'http:') {
     window.location.href = 'https://reinserver.com/servers';
   }
@@ -83,92 +65,6 @@
   function goback() {
     window.location.href = 'https://reinserver.com';
   }
-
-  function fetchServerStatus(url) {
-    return fetch(url)
-      .then(response => response.json())
-      .catch(error => {
-        console.error('Error fetching server status:', error);
-        return null;
-      });
-  }
-
-async function loadStatuses() {
-  const rsnetElement = document.getElementById("rsnet");
-  const rslobElement = document.getElementById("rslob");
-  const rssmpElement = document.getElementById("rssmp");
-  const rslstElement = document.getElementById("rslst");
-  const rswrfElement = document.getElementById("rswrf");
-  const rsmngElement = document.getElementById("rsmng");
-
-  rslobElement.innerHTML = rssmpElement.innerHTML = rslstElement.innerHTML = rswrfElement.innerHTML = ``;
-
-  const networkData = await fetchServerStatus('https://api.mcsrvstat.us/3/play.reinserver.com');
-
-  if (!networkData || !networkData.online) {
-    isnetworkonline = false;
-    rsnetElement.innerHTML = `<b><span class="red-text">network offline</span></b>`;
-    return;
-  }
-
-  const totalPlayers = networkData.players.online ?? 0;
-  rsnetElement.innerHTML = `<b>network: ${totalPlayers}</b> online<span id="loading-dots"><br><br>...</span>`;
-
-  const [lobbyData, smpData, lstData, wrfData, minigamesData] = await Promise.all([
-    fetchServerStatus('https://api.mcsrvstat.us/3/play.reinserver.com:30066'),
-    fetchServerStatus('https://api.mcsrvstat.us/3/play.reinserver.com:30067'),
-    fetchServerStatus('https://api.mcsrvstat.us/3/play.reinserver.com:30068'),
-    fetchServerStatus('https://api.mcsrvstat.us/3/play.reinserver.com:30069'),
-    fetchServerStatus('https://api.mcsrvstat.us/3/play.reinserver.com:31001')
-  ]);
-
-  const loadingDots = document.getElementById("loading-dots");
-  if (loadingDots) loadingDots.innerHTML = `<br>---------------`;
-
-  let lobbyPlayers = 0;
-  let smpPlayers = 0;
-  let lstPlayers = 0;
-  let wrfPlayers = 0;
-
-  if (lobbyData && lobbyData.online) {
-    lobbyPlayers = lobbyData.players.online ?? 0;
-    rslobElement.innerHTML = `<b style="margin-top: 0; padding-top: 0">lobby: ${lobbyPlayers}/${lobbyData.players.max}</b> online`;
-  } else {
-    rslobElement.innerHTML = `<b><span class="red-text">lobby: offline</span></b>`;
-  }
-
-  if (smpData && smpData.online) {
-    smpPlayers = smpData.players.online ?? 0;
-    rssmpElement.innerHTML = `<b>smp: ${smpPlayers}/${smpData.players.max}</b> online`;
-  } else {
-    rssmpElement.innerHTML = `<b><span class="red-text">smp: offline</span></b>`;
-  }
-
-  if (lstData && lstData.online) {
-    lstPlayers = lstData.players.online ?? 0;
-    rslstElement.innerHTML = `<b>lifesteal: ${lstPlayers}/${lstData.players.max}</b> online`;
-  } else {
-    rslstElement.innerHTML = `<b><span class="red-text">lifesteal: offline</span></b>`;
-  }
-  if (wrfData && wrfData.online) {
-    wrfPlayers = wrfData.players.online ?? 0;
-    rswrfElement.innerHTML = `<b>warfare: ${wrfPlayers}/${wrfData.players.max}</b> online`;
-  } else {
-    rswrfElement.innerHTML = `<b><span class="red-text">warfare: offline</span></b>`;
-  }
-
-  // Minigames check
-  if (minigamesData && minigamesData.online) {
-    const minigamesPlayers = Math.max(0, totalPlayers - (lobbyPlayers + smpPlayers + lstPlayers + wrfPlayers));
-    rsmngElement.innerHTML = `<b>minigames: ${minigamesPlayers}/100</b> online`;
-  } else {
-    rsmngElement.innerHTML = `<b><span class="red-text">minigames: offline</span></b>`;
-  }
-}
-
-
-//  loadStatuses();
 </script>
-
 </body>
 </html>
