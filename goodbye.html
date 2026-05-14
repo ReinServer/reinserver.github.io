@@ -119,9 +119,14 @@
       <img src="/images/3.png" alt="ReinServer memory 3">
       <img src="/images/4.png" alt="ReinServer memory 4">
     </div>
+      <br>
+  <button class="button" onclick="goback()">go back</button>
   </div>
 
   <script>
+    function goback() {
+      window.location.href = 'https://reinserver.com';
+    }
     if (window.location.protocol === 'http:') {
       window.location.href = 'https://reinserver.com/goodbye.html';
     }
