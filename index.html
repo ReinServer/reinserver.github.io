@@ -56,12 +56,12 @@
   <p>and i host dedicated servers in my bedroom.</p>
   <br>
   <p>thank you for supporting ReinServer</p>
+  <button class="button" onclick="goToByePage()">shutdown notice</button>
   <br>
+    <br>
   <button class="button" onclick="goToServersPage()">ReinServers</button>
   <br>
   <button class="button" onclick="goToDownloadsPage()">archived world downloads</button>
-  <br>
-  <br>
   <br>
   <br>
   <button class="button" onclick="joinDiscord()">discord</button>
@@ -98,6 +98,9 @@ document.addEventListener("DOMContentLoaded", function () {
   });
     function goToServersPage() {
       window.location.href = 'https://reinserver.com/servers';
+    }
+        function goToByePage() {
+      window.location.href = 'https://reinserver.com/goodbye';
     }
         function goToHostedByRSDashboard() {
       window.location.href = 'https://dashboard.reinserver.com';
